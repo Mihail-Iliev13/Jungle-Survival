@@ -25,15 +25,29 @@ public class Hero extends Participant {
         bribAbility = new ArrayList<>();
         currentAttack = super.getAttack();
     }
-
     void pickItem(Item item) {
         bag.add(item);
-        if(item instanceof Weapon) currentAttack ++; //change when weapon is finished!!!
+        if(item instanceof Weapon) currentAttack ++; //TODO change when weapon is finished!!!
         if(item instanceof Jewel) bribAbility.add((Jewel)item);
     }
 
     void attackEnemy(Enemy enemy) {
     enemy.setLifepoints(enemy.getLifepoints() - currentAttack);
+
+    if(enemy.getLifepoints() <= 0) killingEnemy(enemy);
+    }
+
+    void killingEnemy(Enemy enemy) {
+        experience += enemy.givenExperience;
+        if (experience >= 50) { //TODO set constant
+            experience -= 50; //TODO set constant
+            levelUp();
+        }
+    }
+
+    void levelUp() {
+        super.setLifepoints(getLifepoints() + 50); //TODO set to constant at some point
+        super.setAttack(getAttack() + 10); //TODO set to constant at some point
     }
 
 }
