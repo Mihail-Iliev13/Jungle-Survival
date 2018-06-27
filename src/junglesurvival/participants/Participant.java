@@ -11,4 +11,20 @@ public class Participant {
         this.lifepoints = lifepoints;
         this.attack = attack;
     }
+
+    public int getLifepoints() {
+        return lifepoints;
+    }
+
+    public void setLifepoints(int lifepoints) {
+        this.lifepoints = lifepoints;
+    }
+
+    public int getAttack() {
+        return attack;
+    }
+
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
 }
