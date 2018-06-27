@@ -50,4 +50,11 @@ public class Hero extends Participant {
         super.setAttack(getAttack() + 10); //TODO set to constant at some point
     }
 
+    public void status() {
+        System.out.printf("This %s hero %s has %d lifepoints, %d experience \n" +
+                " %d current attack and a bag with following items:\n", gender, super.getName(),
+                super.getLifepoints(), experience, currentAttack);
+        bag.forEach(System.out::println);
+    }
+
 }

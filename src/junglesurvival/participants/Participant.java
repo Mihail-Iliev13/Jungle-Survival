@@ -20,11 +20,15 @@ public class Participant {
         this.lifepoints = lifepoints;
     }
 
-    public int getAttack() {
+    int getAttack() {
         return attack;
     }
 
-    public void setAttack(int attack) {
+    void setAttack(int attack) {
         this.attack = attack;
+    }
+
+    String getName() {
+        return name;
     }
 }
