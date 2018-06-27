@@ -6,4 +6,9 @@ public class Item {
     public Item(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {//otherwise Hero.status printed strange things in the bag ;)
+        return name;
+    }
 }
