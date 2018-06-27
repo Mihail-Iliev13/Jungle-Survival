@@ -2,8 +2,8 @@ package junglesurvival.participants;
 
 public class Monster extends Enemy {
 
-    public Monster(String name, int lifepoints, int attack) {
-        super(name, lifepoints, attack);
+    public Monster(String name, int lifepoints, int attack, int expGiven) {
+        super(name, lifepoints, attack, expGiven);
     }
 
     @Override

@@ -37,7 +37,7 @@ public class Hero extends Participant {
     if(enemy.getLifepoints() <= 0) killingEnemy(enemy);
     }
 
-    void killingEnemy(Enemy enemy) {
+    private void killingEnemy(Enemy enemy) {
         experience += enemy.givenExperience;
         if (experience >= 50) { //TODO set constant
             experience -= 50; //TODO set constant
@@ -45,7 +45,7 @@ public class Hero extends Participant {
         }
     }
 
-    void levelUp() {
+    private void levelUp() {
         super.setLifepoints(getLifepoints() + 50); //TODO set to constant at some point
         super.setAttack(getAttack() + 10); //TODO set to constant at some point
     }
