@@ -1,4 +1,4 @@
-package junglesurvival.Items;
+package junglesurvival.items;
 
 public class Item {
     private String name;

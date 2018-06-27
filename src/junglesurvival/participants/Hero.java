@@ -1,13 +1,18 @@
 package junglesurvival.participants;
 
-import junglesurvival.Items.Item;
-import junglesurvival.Items.Jewel;
-import junglesurvival.Items.Weapon;
+import junglesurvival.items.Item;
+import junglesurvival.items.Jewel;
+import junglesurvival.items.Weapon;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Hero extends Participant {
+
+    //Sample constants
+    private static final int EXPERIENCE_FOR_LEVELING_UP=50;
+    private static final int BONUS_ATTACK_FOR_LEVELING_UP=10;
+
     private Gender gender;
     private int experience;
     private List<Item> bag;
@@ -25,9 +30,7 @@ public class Hero extends Participant {
     public void pickItem(Item item) {
         bag.add(item);
         if (item instanceof Weapon)
-            currentAttack += ((Weapon) item).getBonusAttack();
-        //currentAttack++; //TODO change when weapon is finished!!!
-        //Implemented some logic for Weapon.
+            currentAttack += ((Weapon) item).getBonusAttack();//Implemented some logic for Weapon. - older code+comment: currentAttack++; //TODO change when weapon is finished!!!
         if (item instanceof Jewel) bribAbility.add((Jewel) item);
     }
 
@@ -39,15 +42,16 @@ public class Hero extends Participant {
 
     private void killingEnemy(Enemy enemy) {
         experience += enemy.givenExperience;
-        if (experience >= 50) { //TODO set constant
-            experience -= 50; //TODO set constant
+        if (experience >= EXPERIENCE_FOR_LEVELING_UP) { //TODO set constant - added a sample constant
+            experience -= EXPERIENCE_FOR_LEVELING_UP; //TODO set constant - added a sample constant
             levelUp();
         }
     }
 
     private void levelUp() {
-        super.setLifepoints(getLifepoints() + 50); //TODO set to constant at some point
-        super.setAttack(getAttack() + 10); //TODO DOESNT SEEM TO WORK ? and set to constant at some point
+        super.setLifepoints(getLifepoints() + EXPERIENCE_FOR_LEVELING_UP); //TODO set to constant at some point - added a sample constant
+        super.setAttack(getAttack() + BONUS_ATTACK_FOR_LEVELING_UP); //TODO DOESNT SEEM TO WORK ?-should work now/ set to constant at some point - added a sample constant
+        currentAttack+=BONUS_ATTACK_FOR_LEVELING_UP;
     }
 
     public void status() {
@@ -57,4 +61,16 @@ public class Hero extends Participant {
         bag.forEach(System.out::println);
     }
 
+    public int getExperience() {
+        return experience;
+    }
+
+    public void setExperience(int experience) {
+        int leftoverExperience=experience;
+        while(leftoverExperience>=EXPERIENCE_FOR_LEVELING_UP) {
+            leftoverExperience -= EXPERIENCE_FOR_LEVELING_UP;
+            levelUp();
+        }
+        this.experience = leftoverExperience;
+    }
 }
