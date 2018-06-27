@@ -21,16 +21,20 @@ public class Hero extends Participant {
         bribAbility = new ArrayList<>();
         currentAttack = super.getAttack();
     }
+
     public void pickItem(Item item) {
         bag.add(item);
-        if(item instanceof Weapon) currentAttack ++; //TODO change when weapon is finished!!!
-        if(item instanceof Jewel) bribAbility.add((Jewel)item);
+        if (item instanceof Weapon)
+            currentAttack += ((Weapon) item).getBonusAttack();
+        //currentAttack++; //TODO change when weapon is finished!!!
+        //Implemented some logic for Weapon.
+        if (item instanceof Jewel) bribAbility.add((Jewel) item);
     }
 
     public void attackEnemy(Enemy enemy) {
-    enemy.setLifepoints(enemy.getLifepoints() - currentAttack);
+        enemy.setLifepoints(enemy.getLifepoints() - currentAttack);
 
-    if(enemy.getLifepoints() <= 0) killingEnemy(enemy);
+        if (enemy.getLifepoints() <= 0) killingEnemy(enemy);
     }
 
     private void killingEnemy(Enemy enemy) {
@@ -48,7 +52,7 @@ public class Hero extends Participant {
 
     public void status() {
         System.out.printf("This %s hero %s has %d lifepoints, %d experience \n" +
-                " %d current attack and a bag with following items:\n", gender, super.getName(),
+                        " %d current attack and a bag with following items:\n", gender, super.getName(),
                 super.getLifepoints(), experience, currentAttack);
         bag.forEach(System.out::println);
     }

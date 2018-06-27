@@ -13,7 +13,7 @@ public class Main {
         System.out.println("hello");
         Hero opra = new Hero("Opra", 100, 30, Gender.FEMALE);
         Monster stryvnik = new Monster("ManEater", 40, 10,70);
-        Weapon bow = new Weapon("GreatBow");
+        Weapon bow = new Weapon("GreatBow", 10);
         Jewel diamond = new Jewel("BigDiamond");
         Food mushroom = new Food("Muhomorka", false, 40);
         opra.attackEnemy(stryvnik);

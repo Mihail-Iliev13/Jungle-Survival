@@ -2,7 +2,18 @@ package junglesurvival.Items;
 
 public class Weapon extends Item {
 
-    public Weapon(String name) {
+    private int bonusAttack;
+
+    public Weapon(String name, int bonusAttack) {
         super(name);
+        this.bonusAttack=bonusAttack;
+    }
+
+    public int getBonusAttack() {
+        return bonusAttack;
+    }
+
+    public void setBonusAttack(int bonusAttack) {
+        this.bonusAttack = bonusAttack;
     }
 }
