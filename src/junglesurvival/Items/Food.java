@@ -14,7 +14,8 @@ public class Food extends Item implements Consumable{
 
     @Override
     public void beingConsumed(Participant eater) {
-        if(isGood) eater.setLifepoints(eater.getLifepoints() - healthpoint);
-        else eater.setLifepoints(eater.getLifepoints() + healthpoint);
+        if(isGood) eater.setLifepoints(eater.getLifepoints() + healthpoint);
+        else eater.setLifepoints(eater.getLifepoints() - healthpoint);
     }
+
 }

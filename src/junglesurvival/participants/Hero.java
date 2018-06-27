@@ -43,7 +43,7 @@ public class Hero extends Participant {
 
     private void levelUp() {
         super.setLifepoints(getLifepoints() + 50); //TODO set to constant at some point
-        super.setAttack(getAttack() + 10); //TODO set to constant at some point
+        super.setAttack(getAttack() + 10); //TODO DOESNT SEEM TO WORK ? and set to constant at some point
     }
 
     public void status() {

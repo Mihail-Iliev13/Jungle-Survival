@@ -25,5 +25,6 @@ public class Main {
         opra.pickItem(bow);
         opra.pickItem(diamond);
         opra.status();
+
     }
 }
