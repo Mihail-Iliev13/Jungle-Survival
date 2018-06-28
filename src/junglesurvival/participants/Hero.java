@@ -1,5 +1,7 @@
 package junglesurvival.participants;
 
+import junglesurvival.Dice;
+import junglesurvival.items.Consumable;
 import junglesurvival.items.Item;
 import junglesurvival.items.Jewel;
 import junglesurvival.items.Weapon;
@@ -63,6 +65,7 @@ public class Hero extends Participant {
                         " %d current attack and a bag with following items:\n", gender, super.getName(),
                 super.getLifepoints(), experience, currentAttack);
         bag.forEach(System.out::println);
+//        bag.stream().filter(x -> x instanceof Consumable).forEach(System.out::println);
     }
 
     public int getExperience() {
@@ -77,5 +80,13 @@ public class Hero extends Participant {
             levelUp();
         }
         this.experience = leftoverExperience;
+    }
+
+    public void eats(Consumable consumable){
+        consumable.beingConsumed(this);
+    }
+
+    public int throwDice(Dice dice){
+        return dice.getValue();
     }
 }

@@ -1,5 +1,5 @@
 package junglesurvival.items;
 
-public enum JewelColor {
+public enum JewelColor{
     RED, BLUE
 }

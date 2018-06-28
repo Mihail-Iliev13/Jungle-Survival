@@ -6,7 +6,7 @@ public class Weapon extends Item {
 
     public Weapon(String name, int bonusAttack) {
         super(name);
-        this.bonusAttack=bonusAttack;
+        this.bonusAttack = bonusAttack;
     }
 
     public int getBonusAttack() {

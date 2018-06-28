@@ -13,7 +13,7 @@ public class Potion extends Item implements Consumable {
 
     public Potion(String name, PotionType type) {
         super(name);
-        this.type=type;
+        this.type = type;
         setBonus(type);
     }
 

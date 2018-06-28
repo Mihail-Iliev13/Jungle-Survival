@@ -2,15 +2,15 @@ package junglesurvival.items;
 
 public class Jewel extends Item {
 
-    private static final int RED_VALUE=10;
-    private static final int BLUE_VALUE=20;
+    private static final int RED_VALUE = 10;
+    private static final int BLUE_VALUE = 20;
 
     private int value;
     private JewelColor color;
 
     public Jewel(String name, JewelColor color) {
         super(name);
-        this.color=color;
+        this.color = color;
         setValue(color);
     }
 
