@@ -33,7 +33,7 @@ public class Potion extends Item implements Consumable {
         if(type.equals(PotionType.HEALTH))
             eater.setLifepoints(eater.getLifepoints()+bonus);
         else if(type.equals(PotionType.EXPERIENCE))
-            eater.setExperience(eater.getExperience()+bonus);
+            eater.setExperience(bonus);//TODO maybe we should rename setExp() to meet new functionality?
 
     }
 }

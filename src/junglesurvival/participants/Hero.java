@@ -69,7 +69,7 @@ public class Hero extends Participant {
         return experience;
     }
 
-    private void setExperience(int bonusExperience) { //this method now works with bonus experience and solves leveling up -> making private
+    public void setExperience(int bonusExperience) { //this method now works with bonus experience and solves leveling up -> making private
 
         int leftoverExperience = experience + bonusExperience;
         while(leftoverExperience >= EXPERIENCE_FOR_LEVELING_UP) {
