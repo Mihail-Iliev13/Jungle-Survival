@@ -10,14 +10,15 @@ import java.util.List;
 public class Hero extends Participant {
 
     //Sample constants
-    private static final int EXPERIENCE_FOR_LEVELING_UP=50;
-    private static final int BONUS_ATTACK_FOR_LEVELING_UP=10;
+    private static final int EXPERIENCE_FOR_LEVELING_UP = 50;
+    private static final int BONUS_ATTACK_FOR_LEVELING_UP = 10;
+    private static final int BONUS_LIFE_ON_LEVELING_UP = 50;
 
     private Gender gender;
     private int experience;
     private List<Item> bag;
     private List<Jewel> bribAbility;
-    private int currentAttack;
+    private int currentAttack; //TODO lets consider spiting attack from super and this to be set only a bonus attack from items?
 
     public Hero(String name, int lifepoints, int attack, Gender gender) {
         super(name, lifepoints, attack);
@@ -41,15 +42,18 @@ public class Hero extends Participant {
     }
 
     private void killingEnemy(Enemy enemy) {
-        experience += enemy.givenExperience;
-        if (experience >= EXPERIENCE_FOR_LEVELING_UP) { //TODO set constant - added a sample constant
-            experience -= EXPERIENCE_FOR_LEVELING_UP; //TODO set constant - added a sample constant
-            levelUp();
-        }
+
+        setExperience(enemy.givenExperience);
+
+        // experience += enemy.givenExperience; //this section seems redundant now
+//        if (experience >= EXPERIENCE_FOR_LEVELING_UP) { //TODO set constant - added a sample constant
+//            experience -= EXPERIENCE_FOR_LEVELING_UP; //TODO set constant - added a sample constant
+//            levelUp();
+//        }
     }
 
     private void levelUp() {
-        super.setLifepoints(getLifepoints() + EXPERIENCE_FOR_LEVELING_UP); //TODO set to constant at some point - added a sample constant
+        super.setLifepoints(getLifepoints() + BONUS_LIFE_ON_LEVELING_UP); //TODO set to constant at some point - added a sample constant
         super.setAttack(getAttack() + BONUS_ATTACK_FOR_LEVELING_UP); //TODO DOESNT SEEM TO WORK ?-should work now/ set to constant at some point - added a sample constant
         currentAttack+=BONUS_ATTACK_FOR_LEVELING_UP;
     }
@@ -65,9 +69,10 @@ public class Hero extends Participant {
         return experience;
     }
 
-    public void setExperience(int experience) {
-        int leftoverExperience=experience;
-        while(leftoverExperience>=EXPERIENCE_FOR_LEVELING_UP) {
+    private void setExperience(int bonusExperience) { //this method now works with bonus experience and solves leveling up -> making private
+
+        int leftoverExperience = experience + bonusExperience;
+        while(leftoverExperience >= EXPERIENCE_FOR_LEVELING_UP) {
             leftoverExperience -= EXPERIENCE_FOR_LEVELING_UP;
             levelUp();
         }
