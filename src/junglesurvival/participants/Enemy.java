@@ -1,13 +1,19 @@
 package junglesurvival.participants;
 
 public abstract class Enemy extends Participant {
-    public int givenExperience;
+    private int givenExperience;
 
-    Enemy(String name, int lifepoints, int attack, int givenExperience) {
-        super(name, lifepoints, attack);
-        this.givenExperience = givenExperience;
+    public Enemy(String name) {
+        super(name);
     }
 
+    public int getGivenExperience() {
+        return givenExperience;
+    }
+
+    protected void setGivenExperience(int givenExperience) {
+        this.givenExperience = givenExperience;
+    }
 
     public abstract void attack(Hero hero);
 }

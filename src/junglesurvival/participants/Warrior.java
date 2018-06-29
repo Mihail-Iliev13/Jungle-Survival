@@ -9,7 +9,9 @@ public class Warrior extends Hero{
     private static final int SPECIAL_ATTACK_BONUS=5;
 
     public Warrior(String name) {
-        super(name, WARRIOR_LIFE_POINTS, WARRIOR_ATTACK_POINTS, Gender.MALE);
+
+        super(name); //, WARRIOR_LIFE_POINTS, WARRIOR_ATTACK_POINTS, Gender.MALE);
+
     }
 
     @Override
@@ -24,6 +26,6 @@ public class Warrior extends Hero{
 
         enemy.setLifepoints(enemy.getLifepoints() - finalAttack);
 
-        if (enemy.getLifepoints() <= 0) setExperience(enemy.givenExperience);
+        if (enemy.getLifepoints() <= 0) setExperience(enemy.getGivenExperience());
     }
 }

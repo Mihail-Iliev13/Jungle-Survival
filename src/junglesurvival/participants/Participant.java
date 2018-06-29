@@ -6,29 +6,27 @@ public class Participant {
     private int attack;
 
 
-    public Participant(String name, int lifepoints, int attack) {
+    protected Participant(String name) {
         this.name = name;
-        this.lifepoints = lifepoints;
-        this.attack = attack;
     }
 
     public int getLifepoints() {
         return lifepoints;
     }
 
-    public void setLifepoints(int lifepoints) {
+    protected void setLifepoints(int lifepoints) {
         this.lifepoints = lifepoints;
     }
 
-    int getAttack() {
+    protected int getAttack() {
         return attack;
     }
 
-    void setAttack(int attack) {
+    protected void setAttack(int attack) {
         this.attack = attack;
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 }

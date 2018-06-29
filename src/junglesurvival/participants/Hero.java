@@ -22,8 +22,8 @@ public abstract class Hero extends Participant {
     private List<Jewel> bribAbility;
     private int currentAttack; //TODO lets consider spiting attack from super and this to be set only a bonus attack from items?
 
-    public Hero(String name, int lifepoints, int attack, Gender gender) {
-        super(name, lifepoints, attack);
+    public Hero(String name) { //}, int lifepoints, int attack, Gender gender) {
+        super(name);
         this.gender = gender;
         bag = new ArrayList<>();
         bribAbility = new ArrayList<>();

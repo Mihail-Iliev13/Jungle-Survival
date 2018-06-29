@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
 
         Dice dice = new Dice();
-        Hero hunter = new Hero("Robert", 90,28,Gender.MALE);
+      //  Hero hunter = new Hero("Robert", 90,28,Gender.MALE);
 
 //        System.out.println("hello");
 //        Hero opra = new Hero("Opra", 100, 30, Gender.FEMALE);
