@@ -10,7 +10,6 @@ public class Potion extends Item implements Consumable {
     private PotionType type;
     private int bonus;
 
-
     public Potion(String name, PotionType type) {
         super(name);
         this.type = type;
@@ -28,12 +27,12 @@ public class Potion extends Item implements Consumable {
             this.bonus =HEALTH_POTION_BONUS;
     }
 
-    @Override
-    public void beingConsumed(Hero eater) {
-        if(type.equals(PotionType.HEALTH))
-            eater.setLifepoints(eater.getLifepoints()+bonus);
-        else if(type.equals(PotionType.EXPERIENCE))
-            eater.setExperience(bonus);//TODO maybe we should rename setExp() to meet new functionality?
+    public PotionType getType() {
+        return type;
+    }
 
+    @Override
+    public int beingConsumed() {
+       return bonus;
     }
 }
