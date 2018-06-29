@@ -9,7 +9,7 @@ import junglesurvival.items.Weapon;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Hero extends Participant {
+public abstract class Hero extends Participant {
 
     //Sample constants
     private static final int EXPERIENCE_FOR_LEVELING_UP = 50;
@@ -37,27 +37,13 @@ public class Hero extends Participant {
         if (item instanceof Jewel) bribAbility.add((Jewel) item);
     }
 
-    public void attackEnemy(Enemy enemy) {
-        enemy.setLifepoints(enemy.getLifepoints() - currentAttack);
+    public abstract void attackEnemy(Enemy enemy);
 
-        if (enemy.getLifepoints() <= 0) killingEnemy(enemy);
-    }
-
-    private void killingEnemy(Enemy enemy) {
-
-        setExperience(enemy.givenExperience);
-
-        // experience += enemy.givenExperience; //this section seems redundant now
-//        if (experience >= EXPERIENCE_FOR_LEVELING_UP) { //TODO set constant - added a sample constant
-//            experience -= EXPERIENCE_FOR_LEVELING_UP; //TODO set constant - added a sample constant
-//            levelUp();
-//        }
-    }
 
     private void levelUp() {
         super.setLifepoints(getLifepoints() + BONUS_LIFE_ON_LEVELING_UP); //TODO set to constant at some point - added a sample constant
         super.setAttack(getAttack() + BONUS_ATTACK_FOR_LEVELING_UP); //TODO DOESNT SEEM TO WORK ?-should work now/ set to constant at some point - added a sample constant
-        currentAttack+=BONUS_ATTACK_FOR_LEVELING_UP;
+        currentAttack += BONUS_ATTACK_FOR_LEVELING_UP;
     }
 
     public void status() {
@@ -75,18 +61,19 @@ public class Hero extends Participant {
     public void setExperience(int bonusExperience) { //this method now works with bonus experience and solves leveling up -> making private
 
         int leftoverExperience = experience + bonusExperience;
-        while(leftoverExperience >= EXPERIENCE_FOR_LEVELING_UP) {
+        while (leftoverExperience >= EXPERIENCE_FOR_LEVELING_UP) {
             leftoverExperience -= EXPERIENCE_FOR_LEVELING_UP;
             levelUp();
         }
         this.experience = leftoverExperience;
     }
 
-    public void eats(Consumable consumable){
+    public void eats(Consumable consumable) {
         consumable.beingConsumed(this);
     }
 
-    public int throwDice(Dice dice){
+    public  int throwDice(){
+        Dice dice=new Dice();
         return dice.getValue();
     }
 }
