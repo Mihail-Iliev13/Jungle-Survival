@@ -17,20 +17,19 @@ public abstract class Hero extends Participant {
   private int experience;
   private List<Item> bag;
   private List<Jewel> bribAbility;
-  private int currentAttack; //TODO lets consider spiting attack from super and this to be set only a bonus attack from items?
+  private int currentAttack;
 
-  public Hero(String name) { //}, int lifepoints, int attack, Gender gender) {
+  public Hero(String name) {
     super(name);
-    this.gender = gender;
     bag = new ArrayList<>();
     bribAbility = new ArrayList<>();
-    currentAttack = super.getAttack();
+    currentAttack = 0;
   }
 
   public void pickItem(Item item) {
     bag.add(item);
     if (item instanceof Weapon)
-      currentAttack += ((Weapon) item).getBonusAttack();//Implemented some logic for Weapon. - older code+comment: currentAttack++; //TODO change when weapon is finished!!!
+      currentAttack += ((Weapon) item).getBonusAttack();
     if (item instanceof Jewel) bribAbility.add((Jewel) item);
   }
 
