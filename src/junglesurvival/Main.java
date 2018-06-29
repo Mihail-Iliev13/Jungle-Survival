@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-
+        System.out.println(1/3);
 //        System.out.println("hello");
 //        Hero opra = new Hero("Opra", 100, 30, Gender.FEMALE);
 //        Monster stryvnik = new Monster("ManEater", 40, 10,70);
