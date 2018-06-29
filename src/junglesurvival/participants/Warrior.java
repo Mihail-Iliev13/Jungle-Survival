@@ -11,6 +11,9 @@ public class Warrior extends Hero{
     public Warrior(String name) {
 
         super(name); //, WARRIOR_LIFE_POINTS, WARRIOR_ATTACK_POINTS, Gender.MALE);
+        setLifepoints(WARRIOR_LIFE_POINTS);
+        setAttack(WARRIOR_ATTACK_POINTS);
+        setGender(Gender.MALE);
 
     }
 
@@ -20,8 +23,12 @@ public class Warrior extends Hero{
         int diceValue=dice.getValue();
         int finalAttack=this.getAttack();
 
-        if(diceValue>4)
-            finalAttack+=SPECIAL_ATTACK_BONUS;
+        if(diceValue>4) {
+            if (diceValue == 6)
+                finalAttack = (finalAttack*2) + SPECIAL_ATTACK_BONUS;
+            else
+                finalAttack += SPECIAL_ATTACK_BONUS;
+        }
 
 
         enemy.setLifepoints(enemy.getLifepoints() - finalAttack);
