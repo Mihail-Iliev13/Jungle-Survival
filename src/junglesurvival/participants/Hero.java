@@ -48,6 +48,7 @@ public abstract class Hero extends Participant {
                     " %d current attack and a bag with following items:\n", gender, super.getName(),
             super.getLifepoints(), experience, currentAttack);
     bag.forEach(System.out::println);
+    
 //        bag.stream().filter(x -> x instanceof Consumable).forEach(System.out::println);
   }
 
