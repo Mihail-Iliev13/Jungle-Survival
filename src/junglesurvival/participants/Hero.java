@@ -73,6 +73,22 @@ public abstract class Hero extends Participant {
         this.gender = gender;
     }
 
+    public List<Item> getBag() {
+        return bag;
+    }
+
+    public void setBag(List<Item> bag) {
+        this.bag = bag;
+    }
+
+    public List<Jewel> getBribAbility() {
+        return bribAbility;
+    }
+
+    public void setBribAbility(List<Jewel> bribAbility) {
+        this.bribAbility = bribAbility;
+    }
+
     public void eats(Food food) {
     setLifepoints(this.getLifepoints() + food.beingConsumed());
   }

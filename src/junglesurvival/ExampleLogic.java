@@ -9,10 +9,12 @@ import java.util.Scanner;
 
 public class ExampleLogic {
     //Constants
-    private static final int FIELD_LENGTH=100;
+    private static final int FIELD_LENGTH=15;
 
     public static  void main(String[] args){
+        //usefull stuff
         Scanner sc=new Scanner(System.in);
+        Dice dice=new Dice();
 
         //Variables:
         String heroChoice="";
@@ -49,9 +51,10 @@ public class ExampleLogic {
         System.out.println("Great, your Hero's now set.\n" +
                 "The way you move forward is similar to a board game - throwing a dice.\n" +
                 "You have 6 different things you can meet: Jewel, Potion, Weapon, Animal, Monster and Boss\n" +
-                "You can use the Jewels to skip challenges,\n" +
-                "Potions can be Health or Experience potions\n" +
-                "Weapons have different attack powers " +
+                "You can use the Jewels to skip challenges.\n" +
+                "Potions can be Health or Experience potions.\n" +
+                "Weapons have different attack powers and different range- mele or ranged.\n" +
+                "Animal is a creature that won't attack you unless you attack it and has no special attacks\n " +
                 "Now comes your first step trough the Jungle.\n" +
                 "");
 

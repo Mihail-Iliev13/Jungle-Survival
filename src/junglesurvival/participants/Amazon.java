@@ -1,6 +1,9 @@
 package junglesurvival.participants;
 
 import junglesurvival.Dice;
+import junglesurvival.items.Item;
+import junglesurvival.items.Weapon;
+import junglesurvival.items.WeaponType;
 
 public class Amazon extends Hero {
 
@@ -19,7 +22,24 @@ public class Amazon extends Hero {
     public void attackEnemy(Enemy enemy) {
         Dice dice=new Dice();
         int diceValue=dice.getValue();
-        int finalAttack=this.getAttack();
+        int finalAttack=0;
+        if (enemy instanceof Flyable) {
+            for (Item item : getBag()) {
+                if (item instanceof Weapon) {
+                    if (((Weapon) item).getType().equals(WeaponType.RANGE)) {
+                        finalAttack = getAttack();
+                        break;
+                    } else
+                        continue;
+
+                }
+            }
+            if(finalAttack==0)
+                finalAttack=getAttack()/2;
+        }
+        else
+            finalAttack=getAttack();
+
 
         if(diceValue>3) {
             if(diceValue==6)
