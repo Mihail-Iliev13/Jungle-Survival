@@ -74,7 +74,7 @@ public abstract class Hero extends Participant {
     }
 
     public List<Item> getBag() {
-        return bag;
+        return new ArrayList<>(bag);
     }
 
     public void setBag(List<Item> bag) {
@@ -82,7 +82,7 @@ public abstract class Hero extends Participant {
     }
 
     public List<Jewel> getBribAbility() {
-        return bribAbility;
+        return new ArrayList<>(bribAbility);
     }
 
     public void setBribAbility(List<Jewel> bribAbility) {
