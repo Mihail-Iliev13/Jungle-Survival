@@ -66,7 +66,15 @@ public abstract class Hero extends Participant {
     this.experience = leftoverExperience;
   }
 
-  public void eats(Food food) {
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public void eats(Food food) {
     setLifepoints(this.getLifepoints() + food.beingConsumed());
   }
 
