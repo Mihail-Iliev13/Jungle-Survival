@@ -10,7 +10,7 @@ public class Chupacabra extends Monster {
 
   @Override
   public void fight(Hero hero) {
-    if (hero.getHeroLifePoints() <= HERO_LIFE_POINTS_WHERE_FIERCE_ATTACK_IS_ACTIVATED) {
+    if (hero.getLifepoints() <= HERO_LIFE_POINTS_WHERE_FIERCE_ATTACK_IS_ACTIVATED) {
       fierceAttack(hero);
     } else {
       attack(hero);
@@ -19,13 +19,7 @@ public class Chupacabra extends Monster {
 
   @Override
   protected void fierceAttack(Hero hero) {
-      int currentDamage = this.getDamagePerAttack();
-      this.setDamagePerAttack(currentDamage * 2);
-      hero.concedeAttack(this);
-  }
-
-  @Override
-  void concedeAttack(Participant participant) {
-
+      int currentHeroLifepoints = hero.getLifepoints();
+      hero.setLifepoints(currentHeroLifepoints - (this.getAttack() * 2));
   }
 }

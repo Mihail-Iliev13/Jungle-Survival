@@ -1,6 +1,6 @@
 package junglesurvival.items;
 
-import junglesurvival.participants.Hero;
+import junglesurvival.participants.*;
 
 public class Food extends Item implements Consumable{
     private boolean isGood;
@@ -13,9 +13,12 @@ public class Food extends Item implements Consumable{
     }
 
     @Override
-    public void beingConsumed(Hero eater) {
-        if(isGood) eater.setLifepoints(eater.getLifepoints() + healthPoint);
-        else eater.setLifepoints(eater.getLifepoints() - healthPoint);
+    public int beingConsumed() {
+        if(isGood){
+            return healthPoint;
+        }
+//         returns negative value of healthpoint
+        return 0 - healthPoint;
     }
 
 }

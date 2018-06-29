@@ -14,8 +14,8 @@ public abstract class Monster extends Enemy {
 
     public Monster(String name) {
         super(name);
-        setEnemylifePoints(MONSTER_STARTING_LIFE_POINTS);
-        setDamagePerAttack(REGULAR_DAMAGE_PER_ATTACK);
+        setLifepoints(MONSTER_STARTING_LIFE_POINTS);
+        setAttack(REGULAR_DAMAGE_PER_ATTACK);
         setGivenExperience(MONSTER_GIVEN_EXPERIENCE);
     }
 
@@ -26,9 +26,11 @@ public abstract class Monster extends Enemy {
 
   @Override
   public void attack(Hero hero) {
-    if (this.getDamagePerAttack() > REGULAR_DAMAGE_PER_ATTACK){
-      this.setDamagePerAttack(REGULAR_DAMAGE_PER_ATTACK);
+    if (this.getAttack() > REGULAR_DAMAGE_PER_ATTACK){
+      this.setAttack(REGULAR_DAMAGE_PER_ATTACK);
     }
-    hero.concedeAttack(this);
+
+    int heroCurrentLifepoints = hero.getLifepoints();
+    hero.setLifepoints(heroCurrentLifepoints - REGULAR_DAMAGE_PER_ATTACK);
   }
 }

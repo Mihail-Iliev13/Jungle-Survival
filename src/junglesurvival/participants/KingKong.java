@@ -11,7 +11,7 @@ public class KingKong extends Monster {
 
   @Override
   public void fight(Hero hero) {
-    if (hero.getHeroLifePoints() >= HERO_LIFE_POINTS_WHERE_FIERCE_ATTACK_IS_NO_LONGER_ACTIVE){
+    if (hero.getLifepoints() >= HERO_LIFE_POINTS_WHERE_FIERCE_ATTACK_IS_NO_LONGER_ACTIVE){
       this.fierceAttack(hero);
     } else {
       attack(hero);
@@ -20,13 +20,9 @@ public class KingKong extends Monster {
 
   @Override
   protected void fierceAttack(Hero hero) {
-    int currentDamage = this.damagePerAttack;
-    setDamagePerAttack(damagePerAttack + 1);
-    hero.concedeAttack(this);
-  }
-
-  @Override
-  void concedeAttack(Participant participant) {
-
+    int currentHeroLifepoints = hero.getLifepoints();
+    int acceleratedAttack = this.getAttack() + 1;
+    hero.setLifepoints(currentHeroLifepoints - acceleratedAttack);
+    this.setAttack(acceleratedAttack);
   }
 }
