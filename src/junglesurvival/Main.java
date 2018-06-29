@@ -1,17 +1,14 @@
 package junglesurvival;
-import junglesurvival.items.*;
 
-import junglesurvival.items.*;
 import junglesurvival.participants.Gender;
 import junglesurvival.participants.Hero;
-import junglesurvival.participants.Monster;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Dice dice = new Dice();
-        Hero hunter = new Hero("Robert", 90,28,Gender.MALE);
+//        Dice dice = new Dice();
+//        Hero hunter = new Hero("Robert", 90,28,Gender.MALE);
 
 //        System.out.println("hello");
 //        Hero opra = new Hero("Opra", 100, 30, Gender.FEMALE);

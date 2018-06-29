@@ -1,34 +1,19 @@
 package junglesurvival.participants;
 
-public class Participant {
+public abstract class Participant {
     private String name;
-    private int lifepoints;
-    private int attack;
 
 
-    public Participant(String name, int lifepoints, int attack) {
-        this.name = name;
-        this.lifepoints = lifepoints;
-        this.attack = attack;
+    public Participant(String name) {
+        setName(name);
     }
 
-    public int getLifepoints() {
-        return lifepoints;
+    public String getName() {
+      return name;
     }
 
-    public void setLifepoints(int lifepoints) {
-        this.lifepoints = lifepoints;
+    private void setName(String name){
+      this.name = name;
     }
-
-    int getAttack() {
-        return attack;
-    }
-
-    void setAttack(int attack) {
-        this.attack = attack;
-    }
-
-    String getName() {
-        return name;
-    }
+    abstract void concedeAttack(Participant participant);
 }
