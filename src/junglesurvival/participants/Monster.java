@@ -3,7 +3,7 @@ package junglesurvival.participants;
 import junglesurvival.participants.Enemy;
 import junglesurvival.participants.Hero;
 
-import javax.rmi.PortableRemoteObject;
+//import javax.rmi.PortableRemoteObject;
 
 //TODO: override method concedeAttack to all monsters
 public abstract class Monster extends Enemy {
