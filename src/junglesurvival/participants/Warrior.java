@@ -32,9 +32,7 @@ public class Warrior extends Hero {
                     if (((Weapon) item).getType().equals(WeaponType.RANGE)) {
                         finalAttack = getAttack();
                         break;
-                    } else
-                        continue;
-
+                    }
                 }
             }
             if(finalAttack==0)
