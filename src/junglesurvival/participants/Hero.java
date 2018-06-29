@@ -85,7 +85,9 @@ public abstract class Hero extends Participant {
   }
 
   public  int throwDice(){
+
     Dice dice=new Dice();
     return dice.getValue();
+
   }
 }
