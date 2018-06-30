@@ -7,7 +7,7 @@ public class Participant {
 
 
     protected Participant(String name) {
-        this.name = name;
+        setName(name);
     }
 
     public int getLifepoints() {
@@ -28,5 +28,14 @@ public class Participant {
 
     public String getName() {
         return name;
+    }
+
+    private void setName(String name){
+
+        if(name.length() < 2 || name.length() > 25) {
+            System.out.println("Invalid Name"); //TODO: it would be better if the method throws exception
+        } else {
+        this.name = name;
+        }
     }
 }

@@ -1,15 +1,12 @@
 package junglesurvival;
 
-import junglesurvival.participants.Amazon;
-import junglesurvival.participants.AnimalType;
-import junglesurvival.participants.Animal;
-import junglesurvival.participants.Hero;
+import junglesurvival.participants.*;
 
 
 public class Main {
 
     public static void main(String[] args) {
-
+        
         System.out.println(1/3);
 //        System.out.println("hello");
 //        Hero opra = new Hero("Opra", 100, 30, Gender.FEMALE);
