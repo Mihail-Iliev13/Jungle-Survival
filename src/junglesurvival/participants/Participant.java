@@ -4,7 +4,8 @@ public class Participant {
     private String name;
     private int lifepoints;
     private int attack;
-
+    private static final int MIN_NAME_LENGHT = 2;
+    private static final int MAX_NAME_LENGHT = 25;
 
     protected Participant(String name) {
         setName(name);
@@ -32,7 +33,7 @@ public class Participant {
 
     private void setName(String name){
 
-        if(name.length() < 2 || name.length() > 25) {
+        if(name.length() < MIN_NAME_LENGHT || name.length() > MAX_NAME_LENGHT) {
             System.out.println("Invalid Name"); //TODO: it would be better if the method throws exception
         } else {
         this.name = name;
