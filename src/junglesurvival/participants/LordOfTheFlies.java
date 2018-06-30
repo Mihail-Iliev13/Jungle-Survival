@@ -21,7 +21,6 @@ public class LordOfTheFlies extends Boss implements Flyable {
     void specialAttack() {
         System.out.println("Vampiric Attack!\n Lord is healing!");
         setLifepoints(getLifepoints() + SPECIAL_BONUS);
-
     }
 
     @Override
