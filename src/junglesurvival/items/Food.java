@@ -1,6 +1,5 @@
 package junglesurvival.items;
 
-import junglesurvival.participants.*;
 
 public class Food extends Item implements Consumable{
     private boolean isGood;
@@ -19,6 +18,11 @@ public class Food extends Item implements Consumable{
         }
 //         returns negative value of healthpoint
         return 0 - healthPoint;
+    }
+
+    @Override
+    public String toString() {
+        return "This is food\n";
     }
 
 }

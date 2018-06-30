@@ -1,12 +1,23 @@
 package junglesurvival;
 
-import junglesurvival.participants.*;
+import junglesurvival.items.*;
 
 
 public class Main {
 
     public static void main(String[] args) {
-        
+      Potion magic = new Potion("Magic", PotionType.EXPERIENCE);
+      Food mushroom = new Food("Mushroom", true, 32);
+      Weapon axe = new Weapon("Axe", 32, WeaponType.RANGE);
+      Jewel jewel = new Jewel("Rubin", JewelColor.RED);
+
+      System.out.println(magic.toString());
+      System.out.println(mushroom.toString());
+      System.out.println(axe.toString());
+      System.out.println(jewel.toString());
+
+
+
         System.out.println(1/3);
 //        System.out.println("hello");
 //        Hero opra = new Hero("Opra", 100, 30, Gender.FEMALE);

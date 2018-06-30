@@ -1,6 +1,5 @@
 package junglesurvival.items;
 
-import junglesurvival.participants.Hero;
 
 public class Potion extends Item implements Consumable {
 
@@ -24,7 +23,7 @@ public class Potion extends Item implements Consumable {
         if(type.equals(PotionType.EXPERIENCE))
             this.bonus = EXPERIENCE_POTION_BOUNS;
         else if(type.equals(PotionType.HEALTH))
-            this.bonus =HEALTH_POTION_BONUS;
+            this.bonus = HEALTH_POTION_BONUS;
     }
 
     public PotionType getType() {
@@ -35,4 +34,9 @@ public class Potion extends Item implements Consumable {
     public int beingConsumed() {
        return bonus;
     }
+
+  @Override
+  public String toString() {
+    return String.format("This is potion of type: %s\n", getType());
+  }
 }

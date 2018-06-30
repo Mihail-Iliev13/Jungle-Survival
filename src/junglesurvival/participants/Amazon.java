@@ -5,6 +5,7 @@ import junglesurvival.items.Item;
 import junglesurvival.items.Weapon;
 import junglesurvival.items.WeaponType;
 
+
 public class Amazon extends Hero {
 
     private static final int AMAZON_LIFE_POINTS=150;

@@ -5,6 +5,10 @@ import junglesurvival.items.Item;
 import junglesurvival.items.Jewel;
 import junglesurvival.items.Weapon;
 import junglesurvival.items.WeaponType;
+import junglesurvival.participants.Enemy;
+import junglesurvival.participants.Flyable;
+import junglesurvival.participants.Gender;
+import junglesurvival.participants.Hero;
 
 public class Warrior extends Hero {
 

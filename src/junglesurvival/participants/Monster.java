@@ -1,7 +1,6 @@
 package junglesurvival.participants;
 
-import junglesurvival.participants.Enemy;
-import junglesurvival.participants.Hero;
+
 
 
 public abstract class Monster extends Enemy {
@@ -16,7 +15,6 @@ public abstract class Monster extends Enemy {
         setAttack(REGULAR_DAMAGE_PER_ATTACK);
         setGivenExperience(MONSTER_GIVEN_EXPERIENCE);
     }
-
 
     protected abstract void fight(Hero hero);
 
