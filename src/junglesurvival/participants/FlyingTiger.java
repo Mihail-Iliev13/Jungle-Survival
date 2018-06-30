@@ -28,6 +28,6 @@ public class FlyingTiger extends Monster implements Flyable{
 
   @Override
   public void fly() {
-    System.out.printf("The %s can fly! He is invulnerable to your your weapon!", this.getName());
+    System.out.printf("The %s can fly! He is invulnerable to your weapon!", this.getName());
   }
 }

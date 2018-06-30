@@ -3,9 +3,7 @@ package junglesurvival.participants;
 import junglesurvival.participants.Enemy;
 import junglesurvival.participants.Hero;
 
-//import javax.rmi.PortableRemoteObject;
 
-//TODO: override method concedeAttack to all monsters
 public abstract class Monster extends Enemy {
 
     protected static final int REGULAR_DAMAGE_PER_ATTACK = 3;
@@ -26,6 +24,7 @@ public abstract class Monster extends Enemy {
 
   @Override
   public void attack(Hero hero) {
+
     if (this.getAttack() > REGULAR_DAMAGE_PER_ATTACK){
       this.setAttack(REGULAR_DAMAGE_PER_ATTACK);
     }
