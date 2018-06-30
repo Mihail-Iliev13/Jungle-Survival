@@ -55,7 +55,7 @@ public abstract class Hero extends Participant {
     return experience;
   }
 
-  public void setExperience(int bonusExperience) {
+  protected void setExperience(int bonusExperience) {
 
     int leftoverExperience = experience + bonusExperience;
 
@@ -70,7 +70,7 @@ public abstract class Hero extends Participant {
         return gender;
     }
 
-    public void setGender(Gender gender) {
+    protected void setGender(Gender gender) {
         this.gender = gender;
     }
 
@@ -103,8 +103,12 @@ public abstract class Hero extends Participant {
 
   public  int throwDice(){
 
-    Dice dice=new Dice();
+    Dice dice = new Dice();
     return dice.getValue();
+  }
 
+  @Override
+  public String toString() {
+    return super.toString() + String.format("Level: %d\n", getExperience());
   }
 }

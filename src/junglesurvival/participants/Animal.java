@@ -1,6 +1,9 @@
 package junglesurvival.participants;
 
 import com.sun.org.apache.regexp.internal.RE;
+import junglesurvival.participants.AnimalType;
+import junglesurvival.participants.Enemy;
+import junglesurvival.participants.Hero;
 
 public class Animal extends Enemy {
 
@@ -10,6 +13,7 @@ public class Animal extends Enemy {
   private AnimalType animal;
 
   public Animal(AnimalType animal) {
+
     super(animal.getName());
     this.animal = animal;
     setGivenExperience(ANIMAL_GIVEN_EXPERIENCE);

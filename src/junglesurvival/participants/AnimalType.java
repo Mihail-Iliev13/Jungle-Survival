@@ -12,7 +12,7 @@ public enum AnimalType {
     this.sound = sound;
   }
 
-   String getName() {
+   public String getName() {
     return name;
   }
 

@@ -28,4 +28,9 @@ public class Jewel extends Item {
     public JewelColor getColor(){
         return this.color;
     }
+
+    @Override
+    public String toString() {
+        return String.format("This is potion of type: %s\n", getColor());
+    }
 }

@@ -22,4 +22,9 @@ public class Weapon extends Item {
     public void setBonusAttack(int bonusAttack) {
         this.bonusAttack = bonusAttack;
     }
+
+    @Override
+    public String toString() {
+        return String.format("This is weapon of type: %s\n", getType());
+    }
 }

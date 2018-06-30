@@ -18,7 +18,7 @@ public class Participant {
         this.lifepoints = lifepoints;
     }
 
-    protected int getAttack() {
+    public int getAttack() {
         return attack;
     }
 
@@ -37,5 +37,11 @@ public class Participant {
         } else {
         this.name = name;
         }
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Name: %s\nRemaining LifePoints: %d\nAttacking power: %d\n"
+                , getName(), getLifepoints(), getAttack());
     }
 }
