@@ -1,6 +1,7 @@
 package junglesurvival.participants;
 
 public abstract class Enemy extends Participant {
+
     private int givenExperience;
 
     public Enemy(String name) {
