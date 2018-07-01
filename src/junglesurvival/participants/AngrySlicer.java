@@ -5,7 +5,7 @@ import junglesurvival.Dice;
 public class AngrySlicer extends Boss {
 
     private static final int SLICER_LIFE_POINTS= 85;
-    private static final int SLICER_ATTACK_POINTS = 12;
+    private static final int SLICER_ATTACK_POINTS = 9;
     private static final int GIVEN_EXPERIENCE = 75;
 
     public AngrySlicer() {
@@ -18,7 +18,7 @@ public class AngrySlicer extends Boss {
     @Override
     void specialAttack() {
         Dice dice = new Dice();
-        int diceValue = dice.getValue() / 3 ;
+        int diceValue = dice.getValue();
         System.out.println("Careful! Angry Slicer Attack is increasing!");
         setAttack(getAttack() + diceValue);
     }
