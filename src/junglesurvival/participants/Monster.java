@@ -1,8 +1,5 @@
 package junglesurvival.participants;
 
-
-
-
 public abstract class Monster extends Enemy {
 
     protected static final int REGULAR_DAMAGE_PER_ATTACK = 3;
@@ -26,7 +23,6 @@ public abstract class Monster extends Enemy {
     if (this.getAttack() > REGULAR_DAMAGE_PER_ATTACK){
       this.setAttack(REGULAR_DAMAGE_PER_ATTACK);
     }
-
     int heroCurrentLifepoints = hero.getLifepoints();
     hero.setLifepoints(heroCurrentLifepoints - REGULAR_DAMAGE_PER_ATTACK);
   }

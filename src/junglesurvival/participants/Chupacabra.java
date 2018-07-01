@@ -1,14 +1,11 @@
 package junglesurvival.participants;
 
-import junglesurvival.participants.Hero;
-import junglesurvival.participants.Monster;
-
 public class Chupacabra extends Monster {
 
   private static final int HERO_LIFE_POINTS_WHERE_FIERCE_ATTACK_IS_ACTIVATED = 25;
 
-  public Chupacabra(String name) {
-    super(name);
+  public Chupacabra() {
+    super("Chupacabra");
   }
 
   @Override
