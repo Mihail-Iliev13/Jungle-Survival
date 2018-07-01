@@ -1,9 +1,5 @@
 package junglesurvival.participants;
 
-import com.sun.org.apache.regexp.internal.RE;
-import junglesurvival.participants.AnimalType;
-import junglesurvival.participants.Enemy;
-import junglesurvival.participants.Hero;
 
 public class Animal extends Enemy {
 
