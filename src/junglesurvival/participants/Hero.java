@@ -1,6 +1,5 @@
 package junglesurvival.participants;
 
-import junglesurvival.Dice;
 import junglesurvival.items.*;
 
 import java.util.ArrayList;
@@ -17,19 +16,19 @@ public abstract class Hero extends Participant {
   private int experience;
   private List<Item> bag;
   private List<Jewel> bribAbility;
-  private int currentAttack;
+  //private int currentAttack; //Removing this all attack functionality now reworked to base attack
 
   public Hero(String name) {
     super(name);
     bag = new ArrayList<>();
     bribAbility = new ArrayList<>();
-    currentAttack = 0;
   }
 
   public void pickItem(Item item) {
     bag.add(item);
     if (item instanceof Weapon)
-      currentAttack += ((Weapon) item).getBonusAttack();
+      setAttack (getAttack() + ((Weapon) item).getBonusAttack()); //Weapons now increase base attack.
+
     if (item instanceof Jewel) bribAbility.add((Jewel) item);
   }
 
@@ -39,13 +38,14 @@ public abstract class Hero extends Participant {
   private void levelUp() {
     super.setLifepoints(getLifepoints() + BONUS_LIFE_ON_LEVELING_UP);
     super.setAttack(getAttack() + BONUS_ATTACK_FOR_LEVELING_UP);
-    currentAttack += BONUS_ATTACK_FOR_LEVELING_UP;
+      System.out.print("You are getting stronger!\n" +
+              "Your life points and attack are increased!\n");
   }
 
   public void status() {
     System.out.printf("This %s hero %s has %d lifepoints, %d experience \n" +
                     " %d current attack and a bag with following items:\n", gender, super.getName(),
-            super.getLifepoints(), experience, currentAttack);
+            super.getLifepoints(), experience, getAttack());
     bag.forEach(System.out::println);
     
 //        bag.stream().filter(x -> x instanceof Consumable).forEach(System.out::println);
@@ -63,7 +63,7 @@ public abstract class Hero extends Participant {
       leftoverExperience -= EXPERIENCE_FOR_LEVELING_UP;
       levelUp();
     }
-    this.experience = leftoverExperience;
+    experience = leftoverExperience;
   }
 
     public Gender getGender() {
@@ -94,21 +94,15 @@ public abstract class Hero extends Participant {
     setLifepoints(this.getLifepoints() + food.beingConsumed());
   }
 
-  public void drinkPotion(Potion potion){
+    public void drinkPotion(Potion potion){
     if(potion.getType().equals(PotionType.HEALTH))
       setLifepoints(getLifepoints() + potion.beingConsumed());
         else if(potion.getType().equals(PotionType.EXPERIENCE))
            setExperience(potion.beingConsumed());
   }
 
-  public  int throwDice(){
-
-    Dice dice = new Dice();
-    return dice.getValue();
-  }
-
   @Override
   public String toString() {
-    return super.toString() + String.format("Level: %d\n", getExperience());
+    return super.toString() + String.format("Experience: %d\n", getExperience());
   }
 }

@@ -2,13 +2,8 @@ package junglesurvival.participants;
 
 import junglesurvival.Dice;
 import junglesurvival.items.Item;
-import junglesurvival.items.Jewel;
 import junglesurvival.items.Weapon;
 import junglesurvival.items.WeaponType;
-import junglesurvival.participants.Enemy;
-import junglesurvival.participants.Flyable;
-import junglesurvival.participants.Gender;
-import junglesurvival.participants.Hero;
 
 public class Warrior extends Hero {
 
@@ -18,7 +13,7 @@ public class Warrior extends Hero {
 
     public Warrior(String name) {
 
-        super(name); //, WARRIOR_LIFE_POINTS, WARRIOR_ATTACK_POINTS, Gender.MALE);
+        super(name);
         setLifepoints(WARRIOR_LIFE_POINTS);
         setAttack(WARRIOR_ATTACK_POINTS);
         setGender(Gender.MALE);
@@ -31,7 +26,7 @@ public class Warrior extends Hero {
         int diceValue = dice.getValue();
         int finalAttack = 0;
         if (enemy instanceof Flyable) {
-            for (Item item : getBag()) {
+            for (Item item : getBag()) { //todo Can we streamAPI this?
                 if (item instanceof Weapon) {
                     if (((Weapon) item).getType().equals(WeaponType.RANGE)) {
                         finalAttack = getAttack();

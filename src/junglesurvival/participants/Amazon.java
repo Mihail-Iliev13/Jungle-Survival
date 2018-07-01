@@ -1,5 +1,4 @@
 package junglesurvival.participants;
-
 import junglesurvival.Dice;
 import junglesurvival.items.Item;
 import junglesurvival.items.Weapon;
@@ -16,7 +15,7 @@ public class Amazon extends Hero {
         super(name);
         setLifepoints(AMAZON_LIFE_POINTS);
         setAttack(AMAZON_ATTACK_POINTS);
-        setGender(Gender.FEMALE);;
+        setGender(Gender.FEMALE);
     }
 
     @Override
@@ -25,7 +24,7 @@ public class Amazon extends Hero {
         int diceValue=dice.getValue();
         int finalAttack=0;
         if (enemy instanceof Flyable) {
-            for (Item item : getBag()) {
+            for (Item item : getBag()) { //todo streamAPI this ?
                 if (item instanceof Weapon) {
                     if (((Weapon) item).getType().equals(WeaponType.RANGE)) {
                         finalAttack = getAttack();
@@ -48,7 +47,6 @@ public class Amazon extends Hero {
             else
                 finalAttack+=SPECIAL_ATTACK_BONUS;
         }
-
 
         enemy.setLifepoints(enemy.getLifepoints() - finalAttack);
 
