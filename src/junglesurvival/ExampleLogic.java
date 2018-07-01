@@ -9,25 +9,32 @@ import java.util.Scanner;
 
 public class ExampleLogic {
     //Constants
-    private static final int FIELD_LENGTH=15;
+    private static final int FIELD_LENGTH = 15;
 
     public static  void main(String[] args){
         //usefull stuff
-        Scanner sc=new Scanner(System.in);
-        Dice dice=new Dice();
+        Scanner sc = new Scanner(System.in);
+        Dice dice = new Dice();
 
         //Variables:
-        String heroChoice="";
-        Gender gender=null;
-        int stepsCount=0;
-        Hero character=null;
+        String heroChoice = "";
+        Gender gender = null;
+        int stepsCount = 0;
+        Hero character = null;
 
 
         System.out.println("Greetings summoner," +
                 "\n you found yourself in a Jungle. You can now choose a Hero to help you get trough it." +
                 "\n First choose your name: ");
-        String characterName=sc.nextLine();
+        String characterName = sc.nextLine();
+        //todo I preffer to put validation of all inputs here as I am unsure we should resolve it as exeption?
+        while (characterName.length() < 3 || characterName.length() > 15) {
+            System.out.println("Please enter a valid name between 3 and 15 characters! Thank you.");
+            characterName = sc.nextLine();
+        }
+
         System.out.println("Next, you can choose a class of the Hero: ");
+
 
         while(!heroChoice.equals("1")&&!heroChoice.equals("2")) {
             System.out.println(
