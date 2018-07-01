@@ -5,7 +5,7 @@ import junglesurvival.Dice;
 public class LordOfTheFlies extends Boss implements Flyable {
 
     private static final int LORD_LIFE_POINTS = 70;
-    private static final int LORD_ATTACK_POINTS = 10;
+    private static final int LORD_ATTACK_POINTS = 12;
     private static final int SPECIAL_BONUS = 7;
     private static final int GIVEN_EXPERIENCE = 75;
 
@@ -31,7 +31,7 @@ public class LordOfTheFlies extends Boss implements Flyable {
 
         hero.setLifepoints(hero.getLifepoints() - finalAttack);
 
-        if(diceValue >= 9) {
+        if(diceValue >= 8) {
             hero.setLifepoints(hero.getLifepoints() - SPECIAL_BONUS);
             specialAttack();
         }

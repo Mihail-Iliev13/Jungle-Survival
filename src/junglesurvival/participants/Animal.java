@@ -3,9 +3,9 @@ package junglesurvival.participants;
 
 public class Animal extends Enemy {
 
-  private static final int REGULAR_DAMAGE_PER_ATTACK = 1;
-  private static final int ANIMAL_STARTING_LIFE_POINTS = 5;
-  private static final int ANIMAL_GIVEN_EXPERIENCE = 1;
+  private static final int REGULAR_DAMAGE_PER_ATTACK = 3;
+  private static final int ANIMAL_STARTING_LIFE_POINTS = 10;
+  private static final int ANIMAL_GIVEN_EXPERIENCE = 10;
   private AnimalType animal;
 
   public Animal(AnimalType animal) {
