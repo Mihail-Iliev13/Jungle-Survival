@@ -27,9 +27,9 @@ public class ExampleLogic {
                 "\n you found yourself in a Jungle. You can now choose a Hero to help you get trough it." +
                 "\n First choose your name: ");
         String characterName = sc.nextLine();
-        //todo I preffer to put validation of all inputs here as I am unsure we should resolve it as exeption?
-        while (characterName.length() < 3 || characterName.length() > 15) {
-            System.out.println("Please enter a valid name between 3 and 15 characters! Thank you.");
+        //todo I prefer to put validation of all inputs here as I am unsure we should resolve it as exception?
+        while (characterName.length() < 3 || characterName.length() > 15 || Character.isUpperCase(characterName.charAt(0))) {
+            System.out.println("Please enter a valid name between 3 and 15 characters with Capital first letter! Thank you.");
             characterName = sc.nextLine();
         }
 
