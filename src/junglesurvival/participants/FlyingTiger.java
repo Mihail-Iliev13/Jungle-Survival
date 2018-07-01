@@ -3,8 +3,8 @@ package junglesurvival.participants;
 public class FlyingTiger extends Monster implements Flyable{
   private static final int HERO_LEVEL_BEYOND_WHICH_FIERCE_ATTACK_IS_ACTIVATED = 3;
 
-  public FlyingTiger(String name) {
-    super(name);
+  public FlyingTiger() {
+    super("FlyingTiger");
 
   }
 
@@ -16,7 +16,7 @@ public class FlyingTiger extends Monster implements Flyable{
 
   @Override
   public void fight (Hero hero) {
-    if(hero.getExperience() < HERO_LEVEL_BEYOND_WHICH_FIERCE_ATTACK_IS_ACTIVATED){
+    if(hero.getLevel() < HERO_LEVEL_BEYOND_WHICH_FIERCE_ATTACK_IS_ACTIVATED){
       fierceAttack(hero);
     } else {
       if (this.getAttack() > REGULAR_DAMAGE_PER_ATTACK){
@@ -28,6 +28,6 @@ public class FlyingTiger extends Monster implements Flyable{
 
   @Override
   public void fly() {
-    System.out.printf("The %s can fly! He is invulnerable to your weapon!", this.getName());
+    System.out.printf("The %s can fly! Do you have a range weapon?", this.getName());
   }
 }

@@ -16,12 +16,14 @@ public abstract class Hero extends Participant {
   private int experience;
   private List<Item> bag;
   private List<Jewel> bribAbility;
+  private int level; //adding hero level as flying tiger requires it.
   //private int currentAttack; //Removing this all attack functionality now reworked to base attack
 
   public Hero(String name) {
     super(name);
     bag = new ArrayList<>();
     bribAbility = new ArrayList<>();
+    level = 0;
   }
 
   public void pickItem(Item item) {
@@ -38,16 +40,21 @@ public abstract class Hero extends Participant {
   private void levelUp() {
     super.setLifepoints(getLifepoints() + BONUS_LIFE_ON_LEVELING_UP);
     super.setAttack(getAttack() + BONUS_ATTACK_FOR_LEVELING_UP);
+    level ++;
       System.out.print("You are getting stronger!\n" +
               "Your life points and attack are increased!\n");
   }
 
   public void status() {
-    System.out.printf("This %s hero %s has %d lifepoints, %d experience \n" +
-                    " %d current attack and a bag with following items:\n", gender, super.getName(),
+    System.out.printf("This %s %d-th level hero %s has %d lifepoints, %d experience \n" +
+                    " %d current attack and a bag with following items:\n", gender, level, super.getName(),
             super.getLifepoints(), experience, getAttack());
     bag.forEach(System.out::println);
 //        bag.stream().filter(x -> x instanceof Consumable).forEach(System.out::println);
+  }
+
+  public int getLevel() {
+      return level;
   }
 
   public int getExperience() {
@@ -102,6 +109,6 @@ public abstract class Hero extends Participant {
 
   @Override
   public String toString() {
-    return super.toString() + String.format("Experience: %d\n", getExperience());
+    return super.toString() + String.format("Level: %d\n", level);
   }
 }

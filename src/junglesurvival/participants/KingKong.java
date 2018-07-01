@@ -5,8 +5,8 @@ public class KingKong extends Monster {
   private static final int HERO_LIFE_POINTS_WHERE_FIERCE_ATTACK_IS_NO_LONGER_ACTIVE = 75;
 
 
-  public KingKong(String name) {
-    super(name);
+  public KingKong() {
+    super("King Kong");
   }
 
   @Override
