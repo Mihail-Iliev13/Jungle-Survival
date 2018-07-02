@@ -1,6 +1,7 @@
 package junglesurvival.participants;
 
 import junglesurvival.Dice;
+import junglesurvival.Exceptions.InvalidNameException;
 
 public class LordOfTheFlies extends Boss implements Flyable {
 
@@ -10,7 +11,7 @@ public class LordOfTheFlies extends Boss implements Flyable {
     private static final int GIVEN_EXPERIENCE = 75;
 
 
-    public LordOfTheFlies() {
+    public LordOfTheFlies() throws InvalidNameException {
         super("Lord of the Flies");
         setLifepoints(LORD_LIFE_POINTS);
         setAttack(LORD_ATTACK_POINTS);

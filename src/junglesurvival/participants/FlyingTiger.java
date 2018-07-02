@@ -1,9 +1,11 @@
 package junglesurvival.participants;
 
+import junglesurvival.Exceptions.InvalidNameException;
+
 public class FlyingTiger extends Monster implements Flyable{
   private static final int HERO_LEVEL_BEYOND_WHICH_FIERCE_ATTACK_IS_ACTIVATED = 3;
 
-  public FlyingTiger() {
+  public FlyingTiger() throws InvalidNameException {
     super("FlyingTiger");
 
   }

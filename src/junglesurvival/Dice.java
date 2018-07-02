@@ -10,4 +10,9 @@ public class Dice {
     Random rand = new Random();
     return rand.nextInt(6) + 1;
   }
+
+  public int getValue(int diceSides) {
+    Random rand = new Random();
+    return rand.nextInt(diceSides) + 1;
+  }
 }

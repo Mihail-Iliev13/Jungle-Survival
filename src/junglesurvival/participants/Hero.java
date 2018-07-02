@@ -1,5 +1,6 @@
 package junglesurvival.participants;
 
+import junglesurvival.Exceptions.InvalidNameException;
 import junglesurvival.items.*;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public abstract class Hero extends Participant {
   private int level; //adding hero level as flying tiger requires it.
   //private int currentAttack; //Removing this all attack functionality now reworked to base attack
 
-  public Hero(String name) {
+  public Hero(String name) throws InvalidNameException {
     super(name);
     bag = new ArrayList<>();
     bribAbility = new ArrayList<>();

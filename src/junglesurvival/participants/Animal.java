@@ -1,6 +1,8 @@
 package junglesurvival.participants;
 
 
+import junglesurvival.Exceptions.InvalidNameException;
+
 public class Animal extends Enemy {
 
   private static final int REGULAR_DAMAGE_PER_ATTACK = 3;
@@ -8,7 +10,7 @@ public class Animal extends Enemy {
   private static final int ANIMAL_GIVEN_EXPERIENCE = 10;
   private AnimalType animal;
 
-  public Animal(AnimalType animal) {
+  public Animal(AnimalType animal) throws InvalidNameException {
 
     super(animal.getName());
     this.animal = animal;

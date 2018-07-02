@@ -1,11 +1,13 @@
 package junglesurvival.participants;
 
+import junglesurvival.Exceptions.InvalidNameException;
+
 public class KingKong extends Monster {
 
   private static final int HERO_LIFE_POINTS_WHERE_FIERCE_ATTACK_IS_NO_LONGER_ACTIVE = 75;
 
 
-  public KingKong() {
+  public KingKong() throws InvalidNameException {
     super("King Kong");
   }
 

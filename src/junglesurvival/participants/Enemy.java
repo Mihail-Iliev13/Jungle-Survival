@@ -1,10 +1,12 @@
 package junglesurvival.participants;
 
+import junglesurvival.Exceptions.InvalidNameException;
+
 public abstract class Enemy extends Participant {
 
     private int givenExperience;
 
-    public Enemy(String name) {
+    public Enemy(String name) throws InvalidNameException {
         super(name);
     }
 

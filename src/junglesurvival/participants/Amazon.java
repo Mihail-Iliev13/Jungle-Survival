@@ -1,5 +1,6 @@
 package junglesurvival.participants;
 import junglesurvival.Dice;
+import junglesurvival.Exceptions.InvalidNameException;
 import junglesurvival.items.Item;
 import junglesurvival.items.Weapon;
 import junglesurvival.items.WeaponType;
@@ -11,7 +12,7 @@ public class Amazon extends Hero {
     private static final int AMAZON_ATTACK_POINTS=15;
     private static final int SPECIAL_ATTACK_BONUS=10;
 
-    public Amazon(String name) {
+    public Amazon(String name) throws InvalidNameException {
         super(name);
         setLifepoints(AMAZON_LIFE_POINTS);
         setAttack(AMAZON_ATTACK_POINTS);

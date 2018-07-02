@@ -1,5 +1,7 @@
 package junglesurvival.participants;
 
+import junglesurvival.Exceptions.InvalidNameException;
+
 public class Participant {
     private String name;
     private int lifepoints;
@@ -7,7 +9,7 @@ public class Participant {
     private static final int MIN_NAME_LENGHT = 2;
     private static final int MAX_NAME_LENGHT = 25;
 
-    protected Participant(String name) {
+    protected Participant(String name) throws InvalidNameException {
         setName(name);
     }
 
@@ -31,10 +33,11 @@ public class Participant {
         return name;
     }
 
-    private void setName(String name){
+    private void setName(String name) throws InvalidNameException {
 
-        if(name.length() < MIN_NAME_LENGHT || name.length() > MAX_NAME_LENGHT) {
-            System.out.println("Invalid Name"); //TODO: it would be better if the method throws exception
+        if(name.length() < MIN_NAME_LENGHT || name.length() > MAX_NAME_LENGHT||!Character.isUpperCase(name.charAt(0))) {
+//            System.out.println("Invalid Name"); //TODO: it would be better if the method throws exception
+            throw new InvalidNameException();
         } else {
         this.name = name;
         }

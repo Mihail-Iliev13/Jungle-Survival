@@ -1,12 +1,14 @@
 package junglesurvival.participants;
 
+import junglesurvival.Exceptions.InvalidNameException;
+
 public abstract class Monster extends Enemy {
 
     protected static final int REGULAR_DAMAGE_PER_ATTACK = 3;
     protected static final int MONSTER_STARTING_LIFE_POINTS = 15;
     protected static final int MONSTER_GIVEN_EXPERIENCE = 3;
 
-    public Monster(String name) {
+    public Monster(String name) throws InvalidNameException {
         super(name);
         setLifepoints(MONSTER_STARTING_LIFE_POINTS);
         setAttack(REGULAR_DAMAGE_PER_ATTACK);

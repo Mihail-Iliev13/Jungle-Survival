@@ -1,6 +1,7 @@
 package junglesurvival.participants;
 
 import junglesurvival.Dice;
+import junglesurvival.Exceptions.InvalidNameException;
 
 public class AngrySlicer extends Boss {
 
@@ -8,7 +9,7 @@ public class AngrySlicer extends Boss {
     private static final int SLICER_ATTACK_POINTS = 9;
     private static final int GIVEN_EXPERIENCE = 75;
 
-    public AngrySlicer() {
+    public AngrySlicer() throws InvalidNameException {
         super("Angry Slicer");
         setLifepoints(SLICER_LIFE_POINTS);
         setAttack(SLICER_ATTACK_POINTS);

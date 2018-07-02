@@ -1,17 +1,18 @@
 package junglesurvival.participants;
 
 import junglesurvival.Dice;
+import junglesurvival.Exceptions.InvalidNameException;
 import junglesurvival.items.Item;
 import junglesurvival.items.Weapon;
 import junglesurvival.items.WeaponType;
 
-public class Warrior extends Hero {
+public class Warrior extends Hero{
 
     private static final int WARRIOR_LIFE_POINTS = 200;
     private static final int WARRIOR_ATTACK_POINTS = 20;
     private static final int SPECIAL_ATTACK_BONUS = 5;
 
-    public Warrior(String name) {
+    public Warrior(String name) throws InvalidNameException {
 
         super(name);
         setLifepoints(WARRIOR_LIFE_POINTS);
@@ -19,6 +20,8 @@ public class Warrior extends Hero {
         setGender(Gender.MALE);
 
     }
+
+
 
     @Override
     public void attackEnemy(Enemy enemy) {
