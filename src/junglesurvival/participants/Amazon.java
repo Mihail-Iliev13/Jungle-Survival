@@ -24,19 +24,25 @@ public class Amazon extends Hero {
         int diceValue=dice.getValue();
         int finalAttack=0;
         if (enemy instanceof Flyable) {
-            for (Item item : getBag()) { //todo streamAPI this ?
-                if (item instanceof Weapon) {
-                    if (((Weapon) item).getType().equals(WeaponType.RANGE)) {
-                        finalAttack = getAttack();
-                        break;
-                    } else
-                        continue;
-
-                }
-            }
-            if(finalAttack==0)
-                finalAttack=getAttack()/2;
+            if (getBag().stream().filter(item -> item instanceof Weapon).anyMatch(item -> ((Weapon) item).getType().equals(WeaponType.RANGE)))
+                finalAttack = getAttack();
+            else
+                finalAttack = getAttack() / 2;
         }
+//
+//            for (Item item : getBag()) { //todo streamAPI this ?
+//                if (item instanceof Weapon) {
+//                    if (((Weapon) item).getType().equals(WeaponType.RANGE)) {
+//                        finalAttack = getAttack();
+//                        break;
+//                    } else
+//                        continue;
+//
+//                }
+//            }
+//            if(finalAttack==0)
+//                finalAttack=getAttack()/2;
+//        }
         else
             finalAttack=getAttack();
 
