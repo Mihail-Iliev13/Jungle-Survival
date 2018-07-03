@@ -39,4 +39,6 @@ public class Potion extends Item implements Consumable {
   public String toString() {
     return String.format("This is potion of type: %s\n", getType());
   }
+
+
 }

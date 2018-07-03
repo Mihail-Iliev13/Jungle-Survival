@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
       Potion magic = new Potion("Magic", PotionType.EXPERIENCE);
-      Food mushroom = new Food("Mushroom", true, 32);
+      Food mushroom = new Food("Mushroom");
       Weapon axe = new Weapon("Axe", 32, WeaponType.RANGE);
       Jewel jewel = new Jewel("Rubin", JewelColor.RED);
 

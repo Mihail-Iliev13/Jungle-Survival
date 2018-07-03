@@ -2,7 +2,7 @@ package junglesurvival.participants;
 
 public enum AnimalType {
 
-  LION("lion", "roar"), ELEPHANT("elephant", "trumpet"), MONKEY("monkey", "gibber");
+  LION("Lion", "roar"), ELEPHANT("Elephant", "trumpet"), MONKEY("Monkey", "gibber");
 
   private String name;
   private String sound;
