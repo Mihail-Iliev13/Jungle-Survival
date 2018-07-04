@@ -12,7 +12,7 @@ public class ExampleLogic {
     private static final int FIELD_LENGTH = 150;
 
     public static void main(String[] args) {
-        //usefull stuff
+        //useful stuff
         Scanner sc = new Scanner(System.in);
         Dice dice = new Dice();
 

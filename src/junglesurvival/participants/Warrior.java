@@ -66,7 +66,9 @@ public class Warrior extends Hero{
 
 
         enemy.setLifepoints(enemy.getLifepoints() - finalAttack);
+        System.out.println("You've attacked for "+finalAttack+" damage.");
 
-        if (enemy.getLifepoints() <= 0) setExperience(enemy.getGivenExperience());
+        if (enemy.getLifepoints() <= 0)
+            setExperience(enemy.getGivenExperience());
     }
 }
