@@ -3,8 +3,6 @@ package junglesurvival;
 import junglesurvival.Exceptions.InvalidNameException;
 import junglesurvival.items.*;
 import junglesurvival.participants.*;
-
-import java.util.Collections;
 import java.util.Scanner;
 
 public class ExampleLogic {
@@ -26,7 +24,6 @@ public class ExampleLogic {
         int stepsCount = 0;
         Hero character = null;
 
-
         //Introduction to the game
         System.out.println("Greetings summoner," +
                 "\n you found yourself in a Jungle. You can now choose a Hero to help you get trough it." +
@@ -39,7 +36,6 @@ public class ExampleLogic {
         }
 
         System.out.println("Next, you can choose a class for the Hero: ");
-
 
         while (!heroChoice.equals("1") && !heroChoice.equals("2")) {
             System.out.println(
@@ -64,6 +60,7 @@ public class ExampleLogic {
                 e.printMessage();
             }
         }
+
         //Game info:
         System.out.println("Great, your Hero's now set.\n" +
                 "The way you move forward is similar to a board game - throwing a dice.\n" +
@@ -114,13 +111,9 @@ public class ExampleLogic {
                 break;
         }
         if (character.getLifepoints() > 0)
-            System.out.println("----------------------------\nCongratulations!!!\n" +
-                    "    YOU WON!!!\n----------------------------");
+            System.out.println("----------------------------\nCongratulations!!!\n" + "    YOU WON!!!\n----------------------------");
         else
-            System.out.println("---------------\n" +
-                    "Game Over!\n---------------");
-
-
+            System.out.println("---------------\n" + "Game Over!\n---------------");
     }
 
     //Creates the next enemy you will encounter using a dice object and a value from a dice
@@ -329,7 +322,10 @@ public class ExampleLogic {
                             });
                             System.out.println("Choose the item you want to consume.");
                             String str = sc.nextLine();
-                            if (!str.matches("-?\\d+")) {
+                            if (!str.matches("-?\\d+")||!hero.getBag().stream().filter(item->item instanceof Consumable).anyMatch(item -> {
+                                String index=String.valueOf(hero.getBag().indexOf(item));
+                                return str.equals(index);
+                            })){
                                 System.out.println("Invalid input");
                                 continue;
                             }
@@ -370,7 +366,10 @@ public class ExampleLogic {
                             });
                             System.out.println("Choose the item you want to consume.");
                             String str = sc.nextLine();
-                            if (!str.matches("-?\\d+")) {
+                            if (!str.matches("-?\\d+")||!hero.getBag().stream().filter(item->item instanceof Consumable).anyMatch(item -> {
+                                String index=String.valueOf(hero.getBag().indexOf(item));
+                                return str.equals(index);
+                            })) {
                                 System.out.println("Invalid input");
                                 continue;
                             }
