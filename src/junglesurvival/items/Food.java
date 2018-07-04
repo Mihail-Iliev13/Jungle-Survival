@@ -31,7 +31,7 @@ public class Food extends Item implements Consumable{
             return healthPoint;
         }
 //         returns negative value of healthpoint
-        return 0 - healthPoint;
+        return 0 - (healthPoint/3);
     }
 
     @Override

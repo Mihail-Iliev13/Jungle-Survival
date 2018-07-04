@@ -9,8 +9,10 @@ import junglesurvival.items.WeaponType;
 public class Warrior extends Hero{
 
     private static final int WARRIOR_LIFE_POINTS = 200;
-    private static final int WARRIOR_ATTACK_POINTS = 20;
+    private static final int WARRIOR_ATTACK_POINTS = 10;
     private static final int SPECIAL_ATTACK_BONUS = 5;
+
+    private static final int MAX_ATTACK_FROM_ITEMS=45;
 
     public Warrior(String name) throws InvalidNameException {
 
@@ -51,10 +53,15 @@ public class Warrior extends Hero{
 
 
         if (diceValue > 4) {
-            if (diceValue == 6)
+            if (diceValue == 6) {
                 finalAttack = (finalAttack * 2) + SPECIAL_ATTACK_BONUS;
-            else
+                System.out.println("In an adrenaline rush you swung your weapon really hard and dealt a lot of damage!");
+            }
+
+            else {
                 finalAttack += SPECIAL_ATTACK_BONUS;
+                System.out.println("You've hit a vital spot on your enemy and dealt more damage.");
+            }
         }
 
 
