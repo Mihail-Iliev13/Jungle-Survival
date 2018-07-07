@@ -36,6 +36,6 @@ public class LordOfTheFlies extends Boss implements Flyable {
 
     @Override
     public void fly() {
-        System.out.printf("The %s can fly! Do you have range weapon?", this.getName());
+        System.out.printf("The %s can fly! Do you have range weapon?\n", this.getName());
     }
 }

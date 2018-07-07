@@ -27,6 +27,6 @@ public class FlyingTiger extends Monster implements Flyable{
 
   @Override
   public void fly() {
-    System.out.printf("The %s can fly! Do you have a range weapon?", this.getName());
+    System.out.printf("The %s can fly! Do you have a range weapon?\n", this.getName());
   }
 }
