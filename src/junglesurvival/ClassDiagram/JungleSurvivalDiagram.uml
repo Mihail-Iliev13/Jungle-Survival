@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="1015.0" y="817.0">junglesurvival.items.WeaponType</node>
+    <node x="1482.0" y="817.0">junglesurvival.participants.Gender</node>
+    <node x="582.0" y="655.0">junglesurvival.participants.LordOfTheFlies</node>
+    <node x="624.0" y="950.0">junglesurvival.items.Weapon</node>
+    <node x="1397.0" y="288.0">junglesurvival.participants.Enemy</node>
+    <node x="750.2857142857142" y="0.0">junglesurvival.participants.Participant</node>
+    <node x="1639.0" y="488.0">junglesurvival.participants.Animal</node>
+    <node x="102.40178571428567" y="189.0">junglesurvival.participants.Hero</node>
+    <node x="0.0" y="499.0">junglesurvival.participants.Warrior</node>
+    <node x="254.0" y="499.0">junglesurvival.participants.Amazon</node>
+    <node x="113.22916666666669" y="828.0">junglesurvival.items.Consumable</node>
+    <node x="834.0" y="817.0">junglesurvival.participants.AnimalType</node>
+    <node x="1346.0" y="499.0">junglesurvival.participants.Monster</node>
+    <node x="448.0" y="928.0">junglesurvival.items.Jewel</node>
+    <node x="508.0" y="532.0">junglesurvival.participants.Boss</node>
+    <node x="1730.0" y="688.0">junglesurvival.participants.Chupacabra</node>
+    <node x="1332.0" y="817.0">junglesurvival.items.JewelColor</node>
+    <node x="264.0" y="939.0">junglesurvival.items.Food</node>
+    <node x="1178.0" y="817.0">junglesurvival.items.PotionType</node>
+    <node x="390.0" y="817.0">junglesurvival.items.Item</node>
+    <node x="0.0" y="928.0">junglesurvival.items.Potion</node>
+    <node x="1613.0" y="817.0">junglesurvival.Exceptions.InvalidNameException</node>
+    <node x="1255.0" y="688.0">junglesurvival.participants.KingKong</node>
+    <node x="814.0" y="688.0">junglesurvival.participants.FlyingTiger</node>
+    <node x="344.0" y="666.0">junglesurvival.participants.AngrySlicer</node>
+    <node x="787.625" y="532.0">junglesurvival.participants.Flyable</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="junglesurvival.items.Jewel" target="junglesurvival.items.Item">
+      <point x="0.0" y="-58.5" />
+      <point x="526.0" y="908.0" />
+      <point x="473.125" y="908.0" />
+      <point x="16.625" y="25.5" />
+    </edge>
+    <edge source="junglesurvival.participants.FlyingTiger" target="junglesurvival.participants.Flyable">
+      <point x="-105.25" y="-25.5" />
+      <point x="919.25" y="630.0" />
+      <point x="851.375" y="630.0" />
+      <point x="21.25" y="14.5" />
+    </edge>
+    <edge source="junglesurvival.items.Food" target="junglesurvival.items.Item">
+      <point x="41.0" y="-47.5" />
+      <point x="387.0" y="908.0" />
+      <point x="439.875" y="908.0" />
+      <point x="-16.625" y="25.5" />
+    </edge>
+    <edge source="junglesurvival.participants.Enemy" target="junglesurvival.participants.Participant">
+      <point x="0.0" y="-25.5" />
+      <point x="1482.5" y="164.0" />
+      <point x="901.0357142857142" y="164.0" />
+      <point x="50.25" y="69.5" />
+    </edge>
+    <edge source="junglesurvival.participants.Boss" target="junglesurvival.participants.Enemy">
+      <point x="0.0" y="-14.5" />
+      <point x="544.0" y="463.0" />
+      <point x="1425.5" y="463.0" />
+      <point x="-57.0" y="25.5" />
+    </edge>
+    <edge source="junglesurvival.participants.Hero" target="junglesurvival.participants.Participant">
+      <point x="0.0" y="-124.5" />
+      <point x="241.40178571428567" y="164.0" />
+      <point x="800.5357142857142" y="164.0" />
+      <point x="-50.25" y="69.5" />
+    </edge>
+    <edge source="junglesurvival.items.Food" target="junglesurvival.items.Consumable">
+      <point x="-41.0" y="-47.5" />
+      <point x="305.0" y="888.0" />
+      <point x="199.47916666666669" y="888.0" />
+      <point x="28.75" y="14.5" />
+    </edge>
+    <edge source="junglesurvival.participants.KingKong" target="junglesurvival.participants.Monster">
+      <point x="0.0" y="-25.5" />
+      <point x="0.0" y="47.5" />
+    </edge>
+    <edge source="junglesurvival.participants.Warrior" target="junglesurvival.participants.Hero">
+      <point x="0.0" y="-47.5" />
+      <point x="117.0" y="463.0" />
+      <point x="171.90178571428567" y="463.0" />
+      <point x="-69.5" y="124.5" />
+    </edge>
+    <edge source="junglesurvival.participants.FlyingTiger" target="junglesurvival.participants.Monster">
+      <point x="105.25" y="-25.5" />
+      <point x="1129.75" y="630.0" />
+      <point x="1391.5" y="630.0" />
+      <point x="-91.0" y="47.5" />
+    </edge>
+    <edge source="junglesurvival.participants.Monster" target="junglesurvival.participants.Enemy">
+      <point x="0.0" y="-47.5" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="junglesurvival.participants.Chupacabra" target="junglesurvival.participants.Monster">
+      <point x="0.0" y="-25.5" />
+      <point x="1932.5" y="630.0" />
+      <point x="1573.5" y="630.0" />
+      <point x="91.0" y="47.5" />
+    </edge>
+    <edge source="junglesurvival.items.Potion" target="junglesurvival.items.Item">
+      <point x="61.0" y="-58.5" />
+      <point x="183.0" y="898.0" />
+      <point x="406.625" y="898.0" />
+      <point x="-49.875" y="25.5" />
+    </edge>
+    <edge source="junglesurvival.participants.LordOfTheFlies" target="junglesurvival.participants.Flyable">
+      <point x="53.0" y="-58.5" />
+      <point x="741.0" y="630.0" />
+      <point x="808.875" y="630.0" />
+      <point x="-21.25" y="14.5" />
+    </edge>
+    <edge source="junglesurvival.participants.Animal" target="junglesurvival.participants.Enemy">
+      <point x="0.0" y="-58.5" />
+      <point x="1771.5" y="463.0" />
+      <point x="1539.5" y="463.0" />
+      <point x="57.0" y="25.5" />
+    </edge>
+    <edge source="junglesurvival.items.Potion" target="junglesurvival.items.Consumable">
+      <point x="-61.0" y="-58.5" />
+      <point x="61.0" y="908.0" />
+      <point x="141.97916666666669" y="908.0" />
+      <point x="-28.75" y="14.5" />
+    </edge>
+    <edge source="junglesurvival.participants.Amazon" target="junglesurvival.participants.Hero">
+      <point x="0.0" y="-47.5" />
+      <point x="371.0" y="463.0" />
+      <point x="310.90178571428567" y="463.0" />
+      <point x="69.5" y="124.5" />
+    </edge>
+    <edge source="junglesurvival.items.Weapon" target="junglesurvival.items.Item">
+      <point x="0.0" y="-36.5" />
+      <point x="706.5" y="898.0" />
+      <point x="506.375" y="898.0" />
+      <point x="49.875" y="25.5" />
+    </edge>
+    <edge source="junglesurvival.participants.LordOfTheFlies" target="junglesurvival.participants.Boss">
+      <point x="-53.0" y="-58.5" />
+      <point x="635.0" y="630.0" />
+      <point x="562.0" y="630.0" />
+      <point x="18.0" y="14.5" />
+    </edge>
+    <edge source="junglesurvival.participants.AngrySlicer" target="junglesurvival.participants.Boss">
+      <point x="0.0" y="-47.5" />
+      <point x="453.0" y="630.0" />
+      <point x="526.0" y="630.0" />
+      <point x="-18.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7000000000000001" x="932.4718581169935" y="587.3739435159754" />
+  <SelectedNodes>
+    <node>junglesurvival.participants.Hero</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

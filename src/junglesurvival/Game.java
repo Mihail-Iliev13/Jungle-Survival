@@ -5,7 +5,7 @@ import junglesurvival.items.*;
 import junglesurvival.participants.*;
 import java.util.Scanner;
 
-public class ExampleLogic {
+public class Game {
     //Constants
     private static final int FIELD_LENGTH = 150;
 
