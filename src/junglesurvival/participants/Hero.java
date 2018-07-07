@@ -77,9 +77,12 @@ public abstract class Hero extends Participant {
         } else {
             if (item instanceof Weapon)
                 if((attackFromItems + ((Weapon) item).getBonusAttack())<MAX_ATTACK_FROM_ITEMS) {
+                    int attackWithoutItems=getAttack()-attackFromItems;
                     attackFromItems += ((Weapon) item).getBonusAttack();
-                    setAttack(getAttack() + attackFromItems);//Weapons now increase base attack.
+                    setAttack(attackWithoutItems + attackFromItems);//Weapons now increase base attack.
                 }
+                else
+                    attackFromItems=MAX_ATTACK_FROM_ITEMS;
           bag.add(item);
         }
     }
