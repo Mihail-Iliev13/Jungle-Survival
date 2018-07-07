@@ -15,8 +15,8 @@ public class ExampleLogic {
         Dice dice = new Dice();
 
         //Variables:
-        Enemy exampleEnemy = null;
-        int diceValue = 0;
+        Enemy exampleEnemy;
+        int diceValue;
         Item nextItem;
         Enemy nextEnemy;
         String heroChoice = "";
@@ -208,13 +208,13 @@ public class ExampleLogic {
     //prints what item you've encountered
     private static void printItemInfo(Item item) {
         if (item instanceof Jewel)
-            System.out.println("You encountered a " + ((Jewel) item).getColor().toString() + " Jewel that has a value of: " + ((Jewel) item).getValue() + " and it's now in your bag.");
+            System.out.println("You encountered a " + ((Jewel) item).getColor().toString().toLowerCase() + " Jewel that has a value of: " + ((Jewel) item).getValue() + " and it's now in your bag.");
         else if (item instanceof Food)
             System.out.println("You encountered a Food item and it's now in your bag.");
         else if (item instanceof Potion)
-            System.out.println("You encountered a " + ((Potion) item).getType().toString() + " Potion that has a value of: " + ((Potion) item).getBonus() + " and it's now in your bag.");
+            System.out.println("You encountered a " + ((Potion) item).getType().toString().toLowerCase() + " Potion that has a value of: " + ((Potion) item).getBonus() + " and it's now in your bag.");
         else
-            System.out.println("You encountered a " + ((Weapon) item).getType().toString() + " Weapon with " + ((Weapon) item).getBonusAttack() + " bonus attack and it's now in your bag.");
+            System.out.println("You encountered a " + ((Weapon) item).getType().toString().toLowerCase() + " Weapon with " + ((Weapon) item).getBonusAttack() + " bonus attack and it's now in your bag.");
     }
 
     //prints what enemy you've encountered
@@ -292,8 +292,8 @@ public class ExampleLogic {
                 whileLoop:
                 while (true) {
                     printEnemyOptions(hero, enemy);
-                    String s = sc.nextLine();
-                    switch (s) {
+                    String userChoice = sc.nextLine();
+                    switch (userChoice) {
                         case "1":
                             hero.attackEnemy(enemy);
                             break whileLoop;
@@ -303,7 +303,7 @@ public class ExampleLogic {
                           } else if (enemy instanceof Boss){
                             hero.bribe((Boss) enemy);
                           }
-                            System.out.println("You've Skiped " + enemy.getName());
+                            System.out.println("You've Skipped " + enemy.getName());
                             return;
                         case "2":
                             if (!hero.hasConsumable()) {

@@ -28,7 +28,11 @@ public class Participant {
   }
 
   protected void setLifepoints(int lifepoints) {
-    this.lifepoints = lifepoints;
+    if(lifepoints < 0 ) {
+      this.lifepoints = 0;
+    } else {
+      this.lifepoints = lifepoints;
+    }
   }
 
   protected void setAttack(int attack) {
