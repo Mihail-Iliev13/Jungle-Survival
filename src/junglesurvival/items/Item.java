@@ -7,16 +7,18 @@ public class Item {
         this.name = name;
     }
 
+  public String getName(){
+    return name;
+  }
+
+  public void printItem(){
+    System.out.println(getName());
+  }
+
     @Override
     public String toString() {//otherwise Hero.status printed strange things in the bag ;)
         return name;
     }
 
-    String getName(){
-        return name;
-    }
 
-    public void printItem(){
-        System.out.println(getName());
-    }
 }

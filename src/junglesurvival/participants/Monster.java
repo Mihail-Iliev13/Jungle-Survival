@@ -12,14 +12,12 @@ public abstract class Monster extends Enemy {
         super(name, MONSTER_STARTING_LIFE_POINTS, REGULAR_DAMAGE_PER_ATTACK, MONSTER_GIVEN_EXPERIENCE);
     }
 
-    protected abstract void fight(Hero hero);
-
     protected abstract void fierceAttack(Hero hero);
 
   @Override
   public void attack(Hero hero) {
 
-    if (this.getAttack() > REGULAR_DAMAGE_PER_ATTACK){
+    if (this.getAttack() != REGULAR_DAMAGE_PER_ATTACK){
       this.setAttack(REGULAR_DAMAGE_PER_ATTACK);
     }
     int heroCurrentLifepoints = hero.getLifepoints();

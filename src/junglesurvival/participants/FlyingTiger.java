@@ -13,19 +13,16 @@ public class FlyingTiger extends Monster implements Flyable{
   @Override
   protected void fierceAttack(Hero hero) {
     int currentHeroLifepoints = hero.getLifepoints();
-    hero.setLifepoints(currentHeroLifepoints - (this.getAttack() + 2));
+    hero.setLifepoints(currentHeroLifepoints - (getAttack() + 2));
   }
 
   @Override
-  public void fight (Hero hero) {
+  public void attack (Hero hero) {
     if(hero.getLevel() < HERO_LEVEL_BEYOND_WHICH_FIERCE_ATTACK_IS_ACTIVATED){
       fierceAttack(hero);
     } else {
-      if (this.getAttack() > REGULAR_DAMAGE_PER_ATTACK){
-        this.setAttack(REGULAR_DAMAGE_PER_ATTACK);
-      }
-      int currentLifepoints = hero.getLifepoints();
-      hero.setLifepoints(currentLifepoints - this.getAttack());    }
+      super.attack(hero);
+    }
   }
 
   @Override

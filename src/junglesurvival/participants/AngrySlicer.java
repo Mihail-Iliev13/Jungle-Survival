@@ -10,10 +10,7 @@ public class AngrySlicer extends Boss {
     private static final int GIVEN_EXPERIENCE = 75;
 
     public AngrySlicer() throws InvalidNameException {
-        super("Angry Slicer");
-        setLifepoints(SLICER_LIFE_POINTS);
-        setAttack(SLICER_ATTACK_POINTS);
-        setGivenExperience(GIVEN_EXPERIENCE);
+        super("Angry Slicer", SLICER_LIFE_POINTS, SLICER_ATTACK_POINTS, GIVEN_EXPERIENCE);
     }
 
     @Override

@@ -12,10 +12,7 @@ public class LordOfTheFlies extends Boss implements Flyable {
 
 
     public LordOfTheFlies() throws InvalidNameException {
-        super("Lord of the Flies");
-        setLifepoints(LORD_LIFE_POINTS);
-        setAttack(LORD_ATTACK_POINTS);
-        setGivenExperience(GIVEN_EXPERIENCE);
+        super("Lord of the Flies", LORD_LIFE_POINTS, LORD_ATTACK_POINTS, GIVEN_EXPERIENCE);
     }
 
     @Override
@@ -33,7 +30,6 @@ public class LordOfTheFlies extends Boss implements Flyable {
         hero.setLifepoints(hero.getLifepoints() - finalAttack);
 
         if(diceValue >= 8) {
-            hero.setLifepoints(hero.getLifepoints() - SPECIAL_BONUS);
             specialAttack();
         }
     }

@@ -3,8 +3,8 @@ package junglesurvival.items;
 
 public class Potion extends Item implements Consumable {
 
-    private static final int HEALTH_POTION_BONUS=30;
-    private static final int EXPERIENCE_POTION_BOUNS=100;
+    private static final int HEALTH_POTION_BONUS = 30;
+    private static final int EXPERIENCE_POTION_BONUS = 100;
 
     private PotionType type;
     private int bonus;
@@ -21,7 +21,7 @@ public class Potion extends Item implements Consumable {
 
     private void setBonus(PotionType type) {
         if(type.equals(PotionType.EXPERIENCE))
-            this.bonus = EXPERIENCE_POTION_BOUNS;
+            this.bonus = EXPERIENCE_POTION_BONUS;
         else if(type.equals(PotionType.HEALTH))
             this.bonus = HEALTH_POTION_BONUS;
     }
@@ -35,9 +35,9 @@ public class Potion extends Item implements Consumable {
        return bonus;
     }
 
-  @Override
-  public String toString() {
-    return String.format("This is potion of type: %s\n", getType());
+     @Override
+    public String toString() {
+    return String.format("This is potion of type: %s\n", getType().toString().toLowerCase());
   }
 
 

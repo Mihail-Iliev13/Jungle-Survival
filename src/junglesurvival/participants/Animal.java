@@ -12,11 +12,8 @@ public class Animal extends Enemy {
 
   public Animal(AnimalType type) throws InvalidNameException {
 
-    super(type.getName());
+    super(type.getName(), ANIMAL_STARTING_LIFE_POINTS, REGULAR_DAMAGE_PER_ATTACK, ANIMAL_GIVEN_EXPERIENCE);
     this.animalType = type;
-    setGivenExperience(ANIMAL_GIVEN_EXPERIENCE);
-    setAttack(REGULAR_DAMAGE_PER_ATTACK);
-    setLifepoints(ANIMAL_STARTING_LIFE_POINTS);
   }
 
   private AnimalType getAnimalType() {

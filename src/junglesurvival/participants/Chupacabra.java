@@ -11,11 +11,11 @@ public class Chupacabra extends Monster {
   }
 
   @Override
-  public void fight(Hero hero) {
+  public void attack(Hero hero) {
     if (hero.getLifepoints() <= HERO_LIFE_POINTS_WHERE_FIERCE_ATTACK_IS_ACTIVATED) {
       fierceAttack(hero);
     } else {
-      attack(hero);
+      super.attack(hero);
     }
   }
 

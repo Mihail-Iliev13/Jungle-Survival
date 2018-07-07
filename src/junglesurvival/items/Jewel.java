@@ -22,7 +22,7 @@ public class Jewel extends Item {
         if(color.equals(JewelColor.BLUE))
             this.value = BLUE_VALUE;
         else if(color.equals(JewelColor.RED))
-            this.value=RED_VALUE;
+            this.value = RED_VALUE;
     }
 
     public JewelColor getColor(){
@@ -31,6 +31,6 @@ public class Jewel extends Item {
 
     @Override
     public String toString() {
-        return String.format("This is potion of type: %s\n", getColor());
+        return String.format("This is a %s jewel\n", getColor().toString().toLowerCase());
     }
 }
