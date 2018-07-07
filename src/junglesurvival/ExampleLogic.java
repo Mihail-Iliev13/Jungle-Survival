@@ -65,7 +65,7 @@ public class ExampleLogic {
         System.out.println("Great, your Hero's now set.\n" +
                 "The way you move forward is similar to a board game - throwing a dice.\n" +
                 "You have 7 different things you can encounter: Jewel, Potion, Food, Weapon, Animal, Monster and Boss\n" +
-                "You can use the Jewels to skip challenges.\n" +
+                "You can use the Jewels to Skip challenges.\n" +
                 "Potions can be Health or Experience potions.\n" +
                 "Weapons have different attack powers and different range- mele or ranged.\n" +
                 "An animal is a creature that won't attack you unless you attack it and has no special attacks\n" +
@@ -99,7 +99,7 @@ public class ExampleLogic {
                 if(nextItem instanceof Weapon)
                     System.out.println("Your attack power is now "+character.getAttack());
                 continue;
-            } else if (diceValue > 4) {
+            } else {
                 nextEnemy = nextEnemyEncounter(diceValue);
                 printEnemyInfo(nextEnemy);
                 fight(character, nextEnemy, sc);
@@ -236,23 +236,23 @@ public class ExampleLogic {
             System.out.println("Choose:\n" +
                     "1: Attack;\n" +
                     "2: View inventory;\n" +
-                    "3: Skipp.");
+                    "3: Skip.");
         else if (enemy instanceof Boss) {
-            if (hero.getBribAbility().stream().filter(item -> item instanceof Jewel).anyMatch(item -> item.getColor().equals(JewelColor.RED)))
+            if (hero.hasJewel(JewelColor.RED))
                 System.out.println("Coose:\n" +
                         "1: Attack;\n" +
                         "2: View inventory;\n" +
-                        "3: Skipp.");
+                        "3: Skip.");
             else
                 System.out.println("Choose:\n" +
                         "1: Attack.\n" +
                         "2: View inventory;");
         } else {
-            if (hero.getBribAbility().stream().filter(item -> item instanceof Jewel).anyMatch(item -> item.getColor().equals(JewelColor.BLUE)))
+            if (hero.hasJewel(JewelColor.BLUE))
                 System.out.println("Choose:\n" +
                         "1: Attack;\n" +
                         "2: View inventory;\n" +
-                        "3: Skipp.");
+                        "3: Skip.");
             else
                 System.out.println("Choose:\n" +
                         "1: Atatck.\n" +
@@ -260,15 +260,15 @@ public class ExampleLogic {
         }
     }
 
-    //Returns whether you can skip an enemy or not. If it's not an animal,
-    //the method searches the bribability field of the hero and returns whether you have the necessity to skip the enemy
-    private static boolean canSkipp(Hero hero, Enemy enemy) {
+    //Returns whether you can Skip an enemy or not. If it's not an animal,
+    //the method searches the bribability field of the hero and returns whether you have the necessity to Skip the enemy
+    private static boolean canSkip(Hero hero, Enemy enemy) {
         if (enemy instanceof Animal)
             return true;
         else if (enemy instanceof Boss) {
-            return hero.getBribAbility().stream().anyMatch(jewel -> jewel.getColor().equals(JewelColor.RED));
+            return hero.hasJewel(JewelColor.RED);
         } else {
-            return hero.getBribAbility().stream().anyMatch(jewel->jewel.getColor().equals(JewelColor.BLUE));
+            return hero.hasJewel(JewelColor.BLUE);
         }
     }
 
@@ -288,7 +288,7 @@ public class ExampleLogic {
         while (hero.getLifepoints() > 0 && enemy.getLifepoints() > 0) {
             if (!(enemy instanceof Animal))
                 enemy.attack(hero);
-            if (canSkipp(hero, enemy)) {
+            if (canSkip(hero, enemy)) {
                 whileLoop:
                 while (true) {
                     printEnemyOptions(hero, enemy);
@@ -298,18 +298,12 @@ public class ExampleLogic {
                             hero.attackEnemy(enemy);
                             break whileLoop;
                         case "3":
-                            hero.bribe(enemy, hero);
-//                            if (enemy instanceof Boss)
-//                                hero.getBribAbility().stream().filter(item -> item instanceof Jewel).filter(item -> item.getColor().equals(JewelColor.RED)).anyMatch(item -> {
-//                                    hero.bribe;
-//                                    return item.getColor().equals(JewelColor.RED);
-//                                });
-//                            else
-//                                hero.getBribAbility().stream().filter(item -> item instanceof Jewel).filter(item -> item.getColor().equals(JewelColor.BLUE)).anyMatch(item -> {
-//                                    hero.getBribAbility().remove(item);
-//                                    return item.getColor().equals(JewelColor.BLUE);
-                            System.out.println("You've skipped "+enemy.getName());
-//                                });
+                          if (enemy instanceof Monster){
+                            hero.bribe((Monster) enemy);
+                          } else if (enemy instanceof Boss){
+                            hero.bribe((Boss) enemy);
+                          }
+                            System.out.println("You've Skiped " + enemy.getName());
                             return;
                         case "2":
                             if (!hero.hasConsumable()) {
@@ -317,12 +311,13 @@ public class ExampleLogic {
                                 continue;
                             }
                             hero.getBag().stream().filter(item -> item instanceof Consumable).forEach(item -> {
-                                System.out.print(hero.getBag().indexOf(item) + " ");
+                                System.out.print(hero.getBag().indexOf(item)  + " ");
                                 item.printItem();
                             });
                             System.out.println("Choose the item you want to consume.");
                             String str = sc.nextLine();
-                            if (!str.matches("-?\\d+")||!hero.getBag().stream().filter(item->item instanceof Consumable).anyMatch(item -> {
+                            if (!str.matches("-?\\d+") || !hero.getBag().stream()
+                                    .filter(item->item instanceof Consumable).anyMatch(item -> {
                                 String index=String.valueOf(hero.getBag().indexOf(item));
                                 return str.equals(index);
                             })){
@@ -337,13 +332,6 @@ public class ExampleLogic {
                                 hero.eats((Food) hero.getBag().get(toConsume));
                                 //hero.getBag().remove(toConsume);//...
                             }
-                            continue;
-                        //For test only!
-//                        case "22":
-//                            hero.getBag().stream().forEach(item -> {System.out.print(hero.getBag().indexOf(item+" "));item.printItem();});
-//                        default:
-//                            System.out.println("Invalid input!");
-
                     }
                 }
             } else {
@@ -381,13 +369,6 @@ public class ExampleLogic {
                                 hero.eats((Food) hero.getBag().get(toConsume));
                                // hero.getBag().remove(toConsume);//...
                             }
-                            continue;
-                        //For test only!
-//                        case "22":
-//                            hero.getBag().stream().forEach(item -> {System.out.print(hero.getBag().indexOf(item+" "));item.printItem();});
-//                        default:
-//                            System.out.println("Invalid input!");
-
                     }
                 }
             }
@@ -399,7 +380,9 @@ public class ExampleLogic {
             printEnemyStatus(enemy);
         }
         if (enemy.getLifepoints() <= 0)
-            System.out.println(enemy.getName() + " is killed. You got " + enemy.getGivenExperience() + " more experience. Your level is now "+hero.getLevel()+" and you have " + hero.getExperience() + " experience.");
+            System.out.println(enemy.getName() + " is killed. You got " + enemy.getGivenExperience()
+                    + " more experience. Your level is now "+hero.getLevel() + " and you have "
+                    + hero.getExperience() + " experience.");
 
     }
 }

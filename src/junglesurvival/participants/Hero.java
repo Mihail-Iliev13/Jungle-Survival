@@ -1,72 +1,131 @@
 package junglesurvival.participants;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.function.Predicate;
+
 import junglesurvival.Exceptions.InvalidNameException;
 import junglesurvival.items.*;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class Hero extends Participant {
 
-    //Sample constants
-    private static final int EXPERIENCE_FOR_LEVELING_UP = 80;
-    private static final int BONUS_ATTACK_FOR_LEVELING_UP = 2;
-    private static final int BONUS_LIFE_ON_LEVELING_UP = 15;
-    private static final int MAX_ATTACK_FROM_ITEMS=45;
+  //Sample constants
+  private static final int EXPERIENCE_FOR_LEVELING_UP = 80;
+  private static final int BONUS_ATTACK_FOR_LEVELING_UP = 2;
+  private static final int BONUS_LIFE_ON_LEVELING_UP = 15;
+  private static final int MAX_ATTACK_FROM_ITEMS = 45;
 
-    private Gender gender;
-    private int experience;
-    private List<Item> bag;
-    private List<Jewel> bribAbility;
-    private int level; //adding hero level as flying tiger requires it.
-    private int attackFromItems;
-    //private int currentAttack; //Removing this all attack functionality now reworked to base attack
+  private Gender gender;
+  private int experience;
+  private List<Item> bag;
+  private LinkedList<Jewel> jewels;
+  private int level; //adding hero level as flying tiger requires it.
+  private int attackFromItems;
+  //private int currentAttack; //Removing this all attack functionality now reworked to base attack
 
-    public Hero(String name) throws InvalidNameException {
-        super(name);
-        bag = new ArrayList<>();
-        bribAbility = new ArrayList<>();
-        level = 0;
-        attackFromItems=0;
+  protected Hero(String name, int lifePoints, int attack, Gender gender) throws InvalidNameException {
+    super(name, lifePoints, attack);
+    setGender(gender);
+    this.bag = new ArrayList<>();
+    this.jewels = new LinkedList<>();
+    this.level = 1;
+    this.attackFromItems = 0;
+  }
+
+  public int getLevel() {
+    return level;
+  }
+
+  public Gender getGender() {
+      return gender;
+  }
+
+  public int getExperience() {
+      return experience;
+  }
+
+  public List<Item> getBag() {
+      return new ArrayList<>(bag);
+  }
+
+  public LinkedList<Jewel> listOfJewels() {
+      return new LinkedList<>(jewels);
+  }
+
+  public void eats(Food food) {
+      setLifepoints(getLifepoints() + food.beingConsumed());
+      this.bag.remove(food);
+  }
+
+  public void drinkPotion(Potion potion) {
+
+      if (potion.getType().equals(PotionType.HEALTH)) {
+          setLifepoints(getLifepoints() + potion.beingConsumed());
+      } else if (potion.getType().equals(PotionType.EXPERIENCE)){
+          setExperience(potion.beingConsumed());
+      }
+      this.bag.remove(potion);
+  }
+
+  public void pickItem(Item item) {
+
+        if (item instanceof Jewel) {
+            jewels.add((Jewel) item);
+        } else {
+            if (item instanceof Weapon)
+                if((attackFromItems + ((Weapon) item).getBonusAttack())<MAX_ATTACK_FROM_ITEMS) {
+                    attackFromItems += ((Weapon) item).getBonusAttack();
+                    setAttack(getAttack() + attackFromItems);//Weapons now increase base attack.
+                }
+          bag.add(item);
+        }
     }
 
-    public void pickItem(Item item) {
-        bag.add(item);
-        if (item instanceof Weapon)
-            if((attackFromItems+((Weapon) item).getBonusAttack())<MAX_ATTACK_FROM_ITEMS) {
-                attackFromItems += ((Weapon) item).getBonusAttack();
-                setAttack(getAttack()+attackFromItems);//Weapons now increase base attack.
-            }
+  public void bribe(Boss boss){
+      useJewel(JewelColor.RED);
+  }
 
+  public boolean hasJewel(JewelColor color){
+      Predicate<Jewel> colour = jewel -> jewel.getColor().equals(color);
+      return listOfJewels().stream().anyMatch(colour);
+  }
 
-        if (item instanceof Jewel) bribAbility.add((Jewel) item);
+    public void bribe(Monster monster){
+        useJewel(JewelColor.BLUE);
     }
 
     public abstract void attackEnemy(Enemy enemy);
 
+    public void status() {
+        System.out.printf("This %s %d-th level hero %s has %d lifepoints, %d experience \n" +
+                        " %d current attack and a bag with following items:\n", getGender(), getLevel(), getName(),
+                getLifepoints(), getExperience(), getAttack());
+        bag.forEach(System.out::println);
+    }
+
+    public boolean hasConsumable(){
+        return getBag().stream().anyMatch(item -> item instanceof Consumable);
+    }
 
     private void levelUp() {
-        super.setLifepoints(getLifepoints() + BONUS_LIFE_ON_LEVELING_UP);
-        super.setAttack(getAttack() + BONUS_ATTACK_FOR_LEVELING_UP);
+
+        setLifepoints(getLifepoints() + BONUS_LIFE_ON_LEVELING_UP);
+        setAttack(getAttack() + BONUS_ATTACK_FOR_LEVELING_UP);
         level++;
-        System.out.print("You are getting stronger! Now your level now is " +getLevel()+
+        System.out.print("You are getting stronger! Your level now is " + getLevel() +
                 ".\nYour life points and attack are increased!\n");
     }
 
-    public void status() {
-        System.out.printf("This %s %d-th level hero %s has %d lifepoints, %d experience \n" +
-                        " %d current attack and a bag with following items:\n", gender, level, super.getName(),
-                super.getLifepoints(), experience, getAttack());
-        bag.forEach(System.out::println);
-//        bag.stream().filter(x -> x instanceof Consumable).forEach(System.out::println);
+    protected void setGender(Gender gender) {
+        this.gender = gender;
     }
 
-    public int getLevel() {
-        return level;
-    }
-
-    public int getExperience() {
-        return experience;
+    protected boolean hasRangeWeapn(){
+       return getBag().stream().filter(item -> item instanceof Weapon)
+               .anyMatch(item -> ((Weapon) item).getType().equals(WeaponType.RANGE));
     }
 
     protected void setExperience(int bonusExperience) {
@@ -80,64 +139,18 @@ public abstract class Hero extends Participant {
         experience = leftoverExperience;
     }
 
-    public Gender getGender() {
-        return gender;
+    private void useJewel(JewelColor color){
+        LinkedList<Jewel> temp = listOfJewels();
+        temp.sort(Comparator.comparing(Jewel::getColor));
+       if(temp.getFirst().getColor().equals(color)){
+           jewels.removeFirst();
+       } else if (temp.getLast().getColor().equals(color)){
+           jewels.removeLast();
+       }
     }
 
-    protected void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public List<Item> getBag() {
-        return new ArrayList<>(bag);
-    }
-
-    public void setBag(List<Item> bag) {
-        this.bag = bag;
-    }
-
-    public List<Jewel> getBribAbility() {
-        return new ArrayList<>(bribAbility);
-    }
-
-    public void setBribAbility(List<Jewel> bribAbility) {
-        this.bribAbility = bribAbility;
-    }
-
-    public void eats(Food food) {
-        setLifepoints(this.getLifepoints() + food.beingConsumed());
-        this.bag.remove((Item)food);
-    }
-
-    public void drinkPotion(Potion potion) {
-        if (potion.getType().equals(PotionType.HEALTH))
-            setLifepoints(getLifepoints() + potion.beingConsumed());
-        else if (potion.getType().equals(PotionType.EXPERIENCE))
-            setExperience(potion.beingConsumed());
-        this.bag.remove((Item)potion);
-    }
-
-    public void bribe(Enemy enemy, Hero hero){
-        if (enemy instanceof Boss)
-            hero.getBribAbility().stream().filter(item -> item instanceof Jewel).filter(item -> item.getColor().equals(JewelColor.RED)).anyMatch(item -> {
-                this.bribAbility.remove(item);
-                return item.getColor().equals(JewelColor.RED);
-            });
-        else
-            hero.getBribAbility().stream().filter(item -> item instanceof Jewel).filter(item -> item.getColor().equals(JewelColor.BLUE)).anyMatch(item -> {
-                this.bribAbility.remove(item);
-                return item.getColor().equals(JewelColor.BLUE);
-            });
-    }
-
-    public boolean hasConsumable(){
-        return this.bag.stream().anyMatch(item->item instanceof Consumable);
-
-
-    }
-
-    @Override
-    public String toString() {
-        return super.toString() + String.format("Level: %d\n", level);
-    }
+  @Override
+  public String toString() {
+     return super.toString() + String.format("Level: %d\n", level);
+  }
 }

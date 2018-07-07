@@ -8,19 +8,19 @@ public class Animal extends Enemy {
   private static final int REGULAR_DAMAGE_PER_ATTACK = 3;
   private static final int ANIMAL_STARTING_LIFE_POINTS = 10;
   private static final int ANIMAL_GIVEN_EXPERIENCE = 10;
-  private AnimalType animal;
+  private AnimalType animalType;
 
-  public Animal(AnimalType animal) throws InvalidNameException {
+  public Animal(AnimalType type) throws InvalidNameException {
 
-    super(animal.getName());
-    this.animal = animal;
+    super(type.getName());
+    this.animalType = type;
     setGivenExperience(ANIMAL_GIVEN_EXPERIENCE);
     setAttack(REGULAR_DAMAGE_PER_ATTACK);
     setLifepoints(ANIMAL_STARTING_LIFE_POINTS);
   }
 
   private AnimalType getAnimalType() {
-    return animal;
+    return animalType;
   }
 
   public void makeSound(){

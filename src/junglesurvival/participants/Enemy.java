@@ -6,8 +6,9 @@ public abstract class Enemy extends Participant {
 
     private int givenExperience;
 
-    public Enemy(String name) throws InvalidNameException {
-        super(name);
+    protected Enemy(String name, int lifepoints, int attack, int givenExperience) throws InvalidNameException {
+        super(name, lifepoints, attack);
+        setGivenExperience(givenExperience);
     }
 
     public int getGivenExperience() {

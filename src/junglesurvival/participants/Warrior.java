@@ -13,38 +13,21 @@ public class Warrior extends Hero {
     private static final int SPECIAL_ATTACK_BONUS = 5;
 
     public Warrior(String name) throws InvalidNameException {
-        super(name);
-        setLifepoints(WARRIOR_LIFE_POINTS);
-        setAttack(WARRIOR_ATTACK_POINTS);
-        setGender(Gender.MALE);
+        super(name, WARRIOR_LIFE_POINTS, WARRIOR_ATTACK_POINTS, Gender.MALE);
     }
 
     @Override
     public void attackEnemy(Enemy enemy) {
+
         Dice dice = new Dice();
         int diceValue = dice.getValue();
-        int finalAttack = 0;
-        if (enemy instanceof Flyable) {
-            if (getBag().stream().filter(item -> item instanceof Weapon).anyMatch(item -> ((Weapon) item).getType().equals(WeaponType.RANGE)))
-                finalAttack = getAttack();
-            else
-                finalAttack = getAttack() / 2;
-        }
+        int finalAttack;
 
-//            for (Item item : getBag()) { //todo Can we streamAPI this?
-//                if (item instanceof Weapon) {
-//                    if (((Weapon) item).getType().equals(WeaponType.RANGE)) {
-//                        finalAttack = getAttack();
-//                        break;
-//                    }
-//                }
-//            }
-//            if(finalAttack==0)
-//                finalAttack=getAttack()/2;
-//        }
-        else
+        if (!hasRangeWeapn() && enemy instanceof Flyable) {
+            finalAttack = getAttack() / 2;
+        } else {
             finalAttack = getAttack();
-
+        }
 
         if (diceValue > 4) {
             if (diceValue == 6) {
