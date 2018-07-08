@@ -1,7 +1,7 @@
 # Jungle-Survival
 Game
 
-# Team: Scarlet Witch
+### Team: Scarlet Witch
 
 # Team Memebers:
 Михаил Илиев (Mihail_Iliev), 
