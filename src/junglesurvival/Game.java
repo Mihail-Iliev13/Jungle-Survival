@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Game {
     //Constants
-    private static final int FIELD_LENGTH = 15;
+    private static final int FIELD_LENGTH = 150;
 
     public static void main(String[] args) {
         //useful stuff
