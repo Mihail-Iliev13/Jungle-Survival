@@ -24,10 +24,14 @@ public class Food extends Item implements Consumable{
     @Override
     public int beingConsumed() {
         if(isGood){
+            System.out.println("You've eaten a healthy "+getName()+". It gave you "+healthPoint+" health points.");
             return healthPoint;
         }
+        int takenLifePoints=healthPoint/3;
+        System.out.println("You've eaten a poisonous "+getName()+". It took from you "+takenLifePoints+" health points.");
+
 //         returns negative value of healthpoint
-        return 0 - (healthPoint/3);
+        return 0 - (takenLifePoints);
     }
 
     @Override

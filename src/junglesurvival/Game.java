@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Game {
     //Constants
-    private static final int FIELD_LENGTH = 150;
+    private static final int FIELD_LENGTH = 15;
 
     public static void main(String[] args) {
         //useful stuff
@@ -109,6 +109,9 @@ public class Game {
             if(character.getLifepoints()<=0)
                 break;
         }
+
+        ((Hero)character).status();
+
         if (character.getLifepoints() > 0)
             System.out.println("----------------------------\nCongratulations!!!\n" + "    YOU WON!!!\n----------------------------");
         else
