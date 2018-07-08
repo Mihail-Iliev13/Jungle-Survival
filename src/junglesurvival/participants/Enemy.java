@@ -1,6 +1,6 @@
 package junglesurvival.participants;
 
-import junglesurvival.Exceptions.InvalidNameException;
+import junglesurvival.exceptions.InvalidNameException;
 
 public abstract class Enemy extends Participant {
 
@@ -15,7 +15,7 @@ public abstract class Enemy extends Participant {
         return givenExperience;
     }
 
-    protected void setGivenExperience(int givenExperience) {
+    private void setGivenExperience(int givenExperience) {
         this.givenExperience = givenExperience;
     }
 

@@ -1,10 +1,10 @@
 package junglesurvival.participants;
 
-import junglesurvival.Exceptions.InvalidNameException;
+import junglesurvival.exceptions.InvalidNameException;
 
 public class Chupacabra extends Monster {
 
-  private static final int HERO_LIFE_POINTS_WHERE_FIERCE_ATTACK_IS_ACTIVATED = 25;
+  private static final int HERO_LIFE_POINTS_BELOW_FIERCE_ATTACK_IS_ACTIVE = 40;
 
   public Chupacabra() throws InvalidNameException {
     super("Chupacabra");
@@ -12,7 +12,7 @@ public class Chupacabra extends Monster {
 
   @Override
   public void attack(Hero hero) {
-    if (hero.getLifepoints() <= HERO_LIFE_POINTS_WHERE_FIERCE_ATTACK_IS_ACTIVATED) {
+    if (hero.getLifepoints() <= HERO_LIFE_POINTS_BELOW_FIERCE_ATTACK_IS_ACTIVE) {
       fierceAttack(hero);
     } else {
       super.attack(hero);

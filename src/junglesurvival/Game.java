@@ -1,6 +1,6 @@
 package junglesurvival;
 
-import junglesurvival.Exceptions.InvalidNameException;
+import junglesurvival.exceptions.InvalidNameException;
 import junglesurvival.items.*;
 import junglesurvival.participants.*;
 import java.util.Scanner;
@@ -126,11 +126,17 @@ public class Game {
                 try {
                     switch (dice.getValue(3)) {
                         case 1:
-                            return new Animal(AnimalType.LION);
+                            Animal lion = new Animal(AnimalType.LION);
+                            lion.makeSound();
+                            return lion;
                         case 2:
-                            return new Animal(AnimalType.ELEPHANT);
+                            Animal elephant = new Animal(AnimalType.ELEPHANT);
+                            elephant.makeSound();
+                            return elephant;
                         case 3:
-                            return new Animal(AnimalType.MONKEY);
+                            Animal monkey = new Animal(AnimalType.MONKEY);
+                            monkey.makeSound();
+                            return monkey;
                     }
                 } catch (InvalidNameException e) {
                     e.printMessage();
@@ -208,7 +214,7 @@ public class Game {
     //prints what item you've encountered
     private static void printItemInfo(Item item) {
         if (item instanceof Jewel)
-            System.out.println("You encountered a " + ((Jewel) item).getColor().toString().toLowerCase() + " Jewel that has a value of: " + ((Jewel) item).getValue() + " and it's now in your bag.");
+            System.out.println("You encountered a " + ((Jewel) item).getColor().toString().toLowerCase() + " Jewel and it's now in your bag.");
         else if (item instanceof Food)
             System.out.println("You encountered a Food item and it's now in your bag.");
         else if (item instanceof Potion)
@@ -223,7 +229,7 @@ public class Game {
             System.out.println("You encountered " + enemy.getName() + ". ");
             ((Flyable) enemy).fly();
         } else if (enemy instanceof Animal)
-            System.out.println("You encountered " + enemy.getName() + ". It's an Animal!");
+            System.out.println("You encountered an Animal!");
         else if (enemy instanceof Monster)
             System.out.println("You encountered " + enemy.getName() + ". It's a Monster!");
         else

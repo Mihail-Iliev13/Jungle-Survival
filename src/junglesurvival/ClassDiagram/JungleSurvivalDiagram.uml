@@ -26,7 +26,7 @@
     <node x="1178.0" y="817.0">junglesurvival.items.PotionType</node>
     <node x="263.75" y="817.0">junglesurvival.items.Item</node>
     <node x="545.0" y="918.0">junglesurvival.items.Potion</node>
-    <node x="0.0" y="1080.0">junglesurvival.Exceptions.InvalidNameException</node>
+    <node x="0.0" y="1080.0">junglesurvival.exceptions.InvalidNameException</node>
     <node x="1255.0" y="688.0">junglesurvival.participants.KingKong</node>
     <node x="814.0" y="688.0">junglesurvival.participants.FlyingTiger</node>
     <node x="344.0" y="666.0">junglesurvival.participants.AngrySlicer</node>

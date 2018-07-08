@@ -1,6 +1,6 @@
 package junglesurvival.participants;
 
-import junglesurvival.Exceptions.InvalidNameException;
+import junglesurvival.exceptions.InvalidNameException;
 
 public abstract class Boss extends Enemy {
 
@@ -8,5 +8,5 @@ public abstract class Boss extends Enemy {
         super(name, lifePoints, attack, givenExperience);
     }
 
-    abstract void specialAttack();
+    abstract void specialAbility();
 }

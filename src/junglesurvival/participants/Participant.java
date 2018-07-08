@@ -1,6 +1,6 @@
 package junglesurvival.participants;
 
-import junglesurvival.Exceptions.InvalidNameException;
+import junglesurvival.exceptions.InvalidNameException;
 
 public class Participant {
   private String name;

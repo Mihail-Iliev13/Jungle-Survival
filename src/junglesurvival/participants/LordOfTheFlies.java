@@ -1,7 +1,7 @@
 package junglesurvival.participants;
 
 import junglesurvival.Dice;
-import junglesurvival.Exceptions.InvalidNameException;
+import junglesurvival.exceptions.InvalidNameException;
 
 public class LordOfTheFlies extends Boss implements Flyable {
 
@@ -16,7 +16,7 @@ public class LordOfTheFlies extends Boss implements Flyable {
     }
 
     @Override
-    void specialAttack() {
+    void specialAbility() {
         System.out.println("Vampiric Attack!\n Lord is healing!");
         setLifepoints(getLifepoints() + SPECIAL_BONUS);
     }
@@ -25,12 +25,13 @@ public class LordOfTheFlies extends Boss implements Flyable {
     public void attack(Hero hero) {
         Dice dice = new Dice();
         int diceValue = dice.getValue() + dice.getValue();
-        int finalAttack = this.getAttack();
+        int attack = this.getAttack();
 
-        hero.setLifepoints(hero.getLifepoints() - finalAttack);
+        hero.setLifepoints(hero.getLifepoints() - attack);
 
-        if(diceValue >= 8) {
-            specialAttack();
+        if(diceValue >= 7) {
+            specialAbility();
+            hero.setLifepoints(hero.getLifepoints() - SPECIAL_BONUS);
         }
     }
 

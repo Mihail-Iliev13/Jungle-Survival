@@ -1,10 +1,7 @@
 package junglesurvival.participants;
 
 import junglesurvival.Dice;
-import junglesurvival.Exceptions.InvalidNameException;
-import junglesurvival.items.Item;
-import junglesurvival.items.Weapon;
-import junglesurvival.items.WeaponType;
+import junglesurvival.exceptions.InvalidNameException;
 
 public class Amazon extends Hero {
 

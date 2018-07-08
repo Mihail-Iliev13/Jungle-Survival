@@ -1,9 +1,10 @@
 package junglesurvival.participants;
 
-import junglesurvival.Exceptions.InvalidNameException;
+import junglesurvival.exceptions.InvalidNameException;
 
 public class FlyingTiger extends Monster implements Flyable{
-  private static final int HERO_LEVEL_BEYOND_WHICH_FIERCE_ATTACK_IS_ACTIVATED = 3;
+
+  private static final int HERO_LEVEL_ABOVE_FIERCE_ATTACK_IS_ACTIVATED = 3;
 
   public FlyingTiger() throws InvalidNameException {
     super("FlyingTiger");
@@ -13,12 +14,12 @@ public class FlyingTiger extends Monster implements Flyable{
   @Override
   protected void fierceAttack(Hero hero) {
     int currentHeroLifepoints = hero.getLifepoints();
-    hero.setLifepoints(currentHeroLifepoints - (getAttack() + 2));
+    hero.setLifepoints(currentHeroLifepoints - (getAttack() * 3));
   }
 
   @Override
   public void attack (Hero hero) {
-    if(hero.getLevel() < HERO_LEVEL_BEYOND_WHICH_FIERCE_ATTACK_IS_ACTIVATED){
+    if(hero.getLevel() > HERO_LEVEL_ABOVE_FIERCE_ATTACK_IS_ACTIVATED){
       fierceAttack(hero);
     } else {
       super.attack(hero);

@@ -1,4 +1,4 @@
-package junglesurvival.Exceptions;
+package junglesurvival.exceptions;
 
 public class InvalidNameException extends Exception {
     public InvalidNameException() {

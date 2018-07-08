@@ -6,14 +6,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Predicate;
 
-import junglesurvival.Exceptions.InvalidNameException;
+import junglesurvival.exceptions.InvalidNameException;
 import junglesurvival.items.*;
 
 
 public abstract class Hero extends Participant {
 
   //Sample constants
-  private static final int EXPERIENCE_FOR_LEVELING_UP = 80;
+  private static final int EXPERIENCE_FOR_LEVELING_UP = 45;
   private static final int BONUS_ATTACK_FOR_LEVELING_UP = 2;
   private static final int BONUS_LIFE_ON_LEVELING_UP = 15;
   private static final int MAX_ATTACK_FROM_ITEMS = 45;
@@ -39,7 +39,7 @@ public abstract class Hero extends Participant {
     return level;
   }
 
-  public Gender getGender() {
+  private Gender getGender() {
       return gender;
   }
 
@@ -51,7 +51,7 @@ public abstract class Hero extends Participant {
       return new ArrayList<>(bag);
   }
 
-  public LinkedList<Jewel> listOfJewels() {
+  private LinkedList<Jewel> listOfJewels() {
       return new LinkedList<>(jewels);
   }
 
@@ -122,16 +122,16 @@ public abstract class Hero extends Participant {
                 ".\nYour life points and attack are increased!\n");
     }
 
-    protected void setGender(Gender gender) {
+    private void setGender(Gender gender) {
         this.gender = gender;
     }
 
-    protected boolean hasRangeWeapn(){
+    boolean hasRangeWeapn(){
        return getBag().stream().filter(item -> item instanceof Weapon)
                .anyMatch(item -> ((Weapon) item).getType().equals(WeaponType.RANGE));
     }
 
-    protected void setExperience(int bonusExperience) {
+    void setExperience(int bonusExperience) {
 
         int leftoverExperience = experience + bonusExperience;
 
@@ -143,11 +143,11 @@ public abstract class Hero extends Participant {
     }
 
     private void useJewel(JewelColor color){
-        LinkedList<Jewel> temp = listOfJewels();
-        temp.sort(Comparator.comparing(Jewel::getColor));
-       if(temp.getFirst().getColor().equals(color)){
+
+        jewels.sort(Comparator.comparing(Jewel::getColor));
+       if(jewels.getFirst().getColor().equals(color)){
            jewels.removeFirst();
-       } else if (temp.getLast().getColor().equals(color)){
+       } else if (jewels.getLast().getColor().equals(color)){
            jewels.removeLast();
        }
     }
