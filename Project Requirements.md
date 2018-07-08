@@ -1,4 +1,4 @@
-<b>Project Description<b>
+<b>Project Description</b>
 
 Design and implement an object-oriented application by choice. Here are some suggestions:
 
