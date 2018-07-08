@@ -19,6 +19,4 @@ public class Item {
     public String toString() {//otherwise Hero.status printed strange things in the bag ;)
         return name;
     }
-
-
 }

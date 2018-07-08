@@ -31,6 +31,6 @@ public class Jewel extends Item {
 
     @Override
     public String toString() {
-        return String.format("This is a %s jewel\n", getColor().toString().toLowerCase());
+        return String.format("%s - %s jewel", super.toString(), getColor().toString().toLowerCase());
     }
 }

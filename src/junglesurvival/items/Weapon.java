@@ -25,6 +25,8 @@ public class Weapon extends Item {
 
     @Override
     public String toString() {
-        return String.format("This is weapon of type: %s\n", getType().toString().toLowerCase());
+
+        return String.format("%s - this is weapon of type: %s",
+                super.toString(), getType().toString().toLowerCase());
     }
 }

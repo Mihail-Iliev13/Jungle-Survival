@@ -85,7 +85,7 @@ public abstract class Hero extends Participant {
                     attackFromItems=MAX_ATTACK_FROM_ITEMS;
           bag.add(item);
         }
-    }
+  }
 
   public void bribe(Boss boss){
       useJewel(JewelColor.RED);
@@ -107,6 +107,7 @@ public abstract class Hero extends Participant {
                         " %d current attack and a bag with following items:\n", getGender(), getLevel(), getName(),
                 getLifepoints(), getExperience(), getAttack());
         bag.forEach(System.out::println);
+        jewels.forEach(System.out::println);
     }
 
     public boolean hasConsumable(){

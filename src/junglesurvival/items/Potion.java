@@ -37,8 +37,7 @@ public class Potion extends Item implements Consumable {
 
      @Override
     public String toString() {
-    return String.format("This is potion of type: %s\n", getType().toString().toLowerCase());
+    return String.format("%s - this is potion of type: %s",
+            super.toString(), getType().toString().toLowerCase());
   }
-
-
 }

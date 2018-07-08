@@ -5,7 +5,7 @@ import junglesurvival.Dice;
 
 public class Food extends Item implements Consumable{
 
-    private static final int FOOD_POINTS = 70;
+    private static final int FOOD_POINTS = 50;
 
     private boolean isGood;
     private int healthPoint;
@@ -18,11 +18,7 @@ public class Food extends Item implements Consumable{
 
     private boolean setIsGood(){
         Dice dice = new Dice();
-        if(dice.getValue(2) == 1){
-            return false;
-        } else {
-            return true;
-        }
+        return dice.getValue(2) != 1;
     }
 
     @Override
@@ -36,7 +32,6 @@ public class Food extends Item implements Consumable{
 
     @Override
     public String toString() {
-        return "This is food\n";
+        return String.format("%s - this is food" , super.toString());
     }
-
 }
