@@ -8,6 +8,10 @@ public class InvalidNameException extends Exception {
         return "Invaid Name";
     }
 
+    public void terminate(){
+        System.exit(0);
+    }
+
     public void printMessage() {
         System.out.println(this.getMessage());
     }

@@ -104,7 +104,6 @@ public class Game {
                 printEnemyInfo(nextEnemy);
                 fight(character, nextEnemy, sc);
 
-
             }
 
             if(character.getLifepoints()<=0)
@@ -169,7 +168,9 @@ public class Game {
                 }
                 break;
             default:
+                return null;
         }
+        //never reachable but necessary
         return null;
     }
 
