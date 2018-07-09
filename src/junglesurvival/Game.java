@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Game {
     //Constants
-    private static final int FIELD_LENGTH = 150;
+    private static final int FIELD_LENGTH = 20;
 
     public static void main(String[] args) {
         //useful stuff
@@ -20,7 +20,6 @@ public class Game {
         Item nextItem;
         Enemy nextEnemy;
         String heroChoice = "";
-        Gender gender = null;
         int stepsCount = 0;
         Hero character = null;
 
@@ -29,7 +28,7 @@ public class Game {
                 "\n you found yourself in a Jungle. You can now choose a Hero to help you get trough it." +
                 "\n First choose your Hero's name: ");
         String characterName = sc.nextLine();
-        //Added a custom exception class//todo I prefer to put validation of all inputs here as I am unsure we should resolve it as exception?
+        //Intended additional verification
         while (characterName.length() < 3 || characterName.length() > 15 || !Character.isUpperCase(characterName.charAt(0))) {
             System.out.println("Please enter a valid name between 3 and 15 characters with Capital first letter! Thank you.");
             characterName = sc.nextLine();
@@ -110,7 +109,7 @@ public class Game {
                 break;
         }
 
-        ((Hero)character).status();
+        character.status();
 
         if (character.getLifepoints() > 0)
             System.out.println("----------------------------\nCongratulations!!!\n" + "    YOU WON!!!\n----------------------------");
@@ -271,7 +270,7 @@ public class Game {
     }
 
     //Returns whether you can Skip an enemy or not. If it's not an animal,
-    //the method searches the bribability field of the hero and returns whether you have the necessity to Skip the enemy
+    //the method searches the jewels field of the hero and returns whether you have the necessity to Skip the enemy
     private static boolean canSkip(Hero hero, Enemy enemy) {
         if (enemy instanceof Animal)
             return true;
@@ -281,7 +280,6 @@ public class Game {
             return hero.hasJewel(JewelColor.BLUE);
         }
     }
-
     //maybe make Enemy abstract and put an abstract status method so each enemy can print it's values
     private static void printEnemyStatus(Enemy enemy) {
         System.out.println(enemy.getName() + ":\nlife points: " + enemy.getLifepoints());
@@ -337,10 +335,8 @@ public class Game {
                             int toConsume = Integer.parseInt(str);
                             if (hero.getBag().get(toConsume) instanceof Potion) {
                                 hero.drinkPotion((Potion) hero.getBag().get(toConsume));
-                                //hero.getBag().remove(toConsume);//Todo, remove doesn't seem to work this way//Fixed in Hero-automatically removed when consumed.
                             } else {
                                 hero.eats((Food) hero.getBag().get(toConsume));
-                                //hero.getBag().remove(toConsume);//...
                             }
                     }
                 }
@@ -374,10 +370,8 @@ public class Game {
                             int toConsume = Integer.parseInt(str);
                             if (hero.getBag().get(toConsume) instanceof Potion) {
                                 hero.drinkPotion((Potion) hero.getBag().get(toConsume));
-                               // hero.getBag().remove(toConsume);//...
                             } else {
                                 hero.eats((Food) hero.getBag().get(toConsume));
-                               // hero.getBag().remove(toConsume);//...
                             }
                     }
                 }
